@@ -12,19 +12,19 @@ When we come to string matching the most basic approach is what is known as brut
 
 The principles of brute force string matching are quite simple. We must check for a match between the first characters of the pattern with the first character of the text as on the picture bellow.
 
-[![First step of brute force string matching](/wp-content/uploads/2012/03/FirstStepBruteforcestringmatching.png)](/wp-content/uploads/2012/03/FirstStepBruteforcestringmatching.png)We start by comparing the first characters of the text and the pattern! 
+[![First step of brute force string matching](../images/FirstStepBruteforcestringmatching.png)](../images/FirstStepBruteforcestringmatching.png)We start by comparing the first characters of the text and the pattern! 
 
 If they don’t match we move forward the second character of the text. Now we compare the first character of the pattern with the second character of the text. If they don’t match again we move forward until we get a match or until we reach the end of the text. 
 
-[![Second step of brute force string matching](/wp-content/uploads/2012/03/SecondStepBruteforcestringmatching.png)](/wp-content/uploads/2012/03/SecondStepBruteforcestringmatching.png)Because the first character of the text and the pattern don't match, we move forward the second character of the text. Now we compare the second character of the text with the first character of the pattern!
+[![Second step of brute force string matching](../images/SecondStepBruteforcestringmatching.png)](../images/SecondStepBruteforcestringmatching.png)Because the first character of the text and the pattern don't match, we move forward the second character of the text. Now we compare the second character of the text with the first character of the pattern!
 
 In case they match we move forward the second character of the pattern comparing it with the “next” character of the text, as on the picture bellow.
 
-[![Third step of  brute force string matching](/wp-content/uploads/2012/03/ThirdStepBruteforcestringmatching.png)](/wp-content/uploads/2012/03/ThirdStepBruteforcestringmatching.png)If case a character from the text match against the first character of the pattern we move forward to the second character of the pattern and the next character of the text!
+[![Third step of  brute force string matching](../images/ThirdStepBruteforcestringmatching.png)](../images/ThirdStepBruteforcestringmatching.png)If case a character from the text match against the first character of the pattern we move forward to the second character of the pattern and the next character of the text!
 
 Just because we have found a match between the first character from the pattern with some character of the text, doesn’t mean that the pattern appears in the text. We must move forward to see whether the full pattern is contained into the text. 
 
-[![Match in brute force string matching](/wp-content/uploads/2012/03/MatchBruteforcestringmatching.png)](/wp-content/uploads/2012/03/MatchBruteforcestringmatching.png)The pattern is matched!
+[![Match in brute force string matching](../images/MatchBruteforcestringmatching.png)](../images/MatchBruteforcestringmatching.png)The pattern is matched!
 
 ## Implementation
 
@@ -38,11 +38,11 @@ function sub_string($pattern, $subject)
  
 	for ($i = 0; i n is the length of the text, while m is the length of the pattern.
 
-[![Brute force string matching complexity chart 1](/wp-content/uploads/2012/03/BruteForceStringMatchingComplexityChart1.png)](/wp-content/uploads/2012/03/BruteForceStringMatchingComplexityChart1.png)For fixed pattern length of m = 5, we can see that even for relatively short text the time grows quickly!
+[![Brute force string matching complexity chart 1](../images/BruteForceStringMatchingComplexityChart1.png)](../images/BruteForceStringMatchingComplexityChart1.png)For fixed pattern length of m = 5, we can see that even for relatively short text the time grows quickly!
 
 In case we fix the length of the text and test against variable length of the pattern, again we get rapidly growing function.
 
-[![Brute force string matching complexity chart 2](/wp-content/uploads/2012/03/BruteForceStringMatchingComplexityChart2.png)](/wp-content/uploads/2012/03/BruteForceStringMatchingComplexityChart2.png) 
+[![Brute force string matching complexity chart 2](../images/BruteForceStringMatchingComplexityChart2.png)](../images/BruteForceStringMatchingComplexityChart2.png) 
 
 ## Application
 

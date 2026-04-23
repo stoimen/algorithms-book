@@ -10,7 +10,7 @@ The most natural approach is to loop through the list until we find the desired 
 
 This is really the most ineffective implementation. There are two big mistakes in this code. First of all we calculate the length of the list on every iteration of the array, and secondly after we find the desired element, we don’t break the loop, but continue to loop through the array.
 
-![Forward Linear Search](/wp-content/uploads/2011/11/forward-linear-search.jpg)
+![Forward Linear Search](../images/forward-linear-search.jpg)
 
 Yes, if the element is repeated without the “break” we can find its last occurrence, but if not the loop will iterate over the end of the array with no practical value.
 
@@ -18,7 +18,7 @@ Yes, if the element is repeated without the “break” we can find its last occ
 
 … and javascript:
 
-![Optimized forward linear search](/wp-content/uploads/2011/11/optimized-forward-linear-search.jpg)
+![Optimized forward linear search](../images/optimized-forward-linear-search.jpg)
 
 Even with this little optimization the algorithm remains ineffective. As we can see, on every iteration we have two conditional expressions. First we check whether we’ve reached the end of the list, and then we check whether the current element equals to the searched element. So the question is can we reduce the number of the conditional expressions?
 
@@ -34,7 +34,7 @@ Indeed here we have only one conditional expression, but the problem is that thi
 
 The above problem can be solved by inserting the desired item as a sentinel value. Thus we’re sure that the list contains the value, so the loop will stop for sure even if at the beginning the value didn’t appear to be part of the list.
 
-![Using setinel in sequential search](/wp-content/uploads/2011/11/sentinel-linear-search.jpg)
+![Using setinel in sequential search](../images/sentinel-linear-search.jpg)
 
 This approach can be used to overcome the problem of the reverse linear search approach from the previous section.
 

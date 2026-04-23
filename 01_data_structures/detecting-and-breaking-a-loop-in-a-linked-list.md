@@ -4,11 +4,11 @@
 
 Linked lists are one very common and handy data structure that can be used in many cases of the practical programming. In this post we’ll assume that we’re talking about singly linked list. This means that each item is pointed by it’s previous item and it points to it’s next item. In this scenario the first item of the list, its head, doesn’t have an ancestor and the last item doesn’t have a successor.
 
-[![Singly Linked List](/wp-content/uploads/2012/07/1.-Singly-Linked-List.png)](/wp-content/uploads/2012/07/1.-Singly-Linked-List.png) 
+[![Singly Linked List](../images/1.-Singly-Linked-List.png)](../images/1.-Singly-Linked-List.png) 
 
 Sometimes, due to bugs or bad architecture or complexity of the applications we can have problems with lists. One very typical problem is having a loop, which in breve means that some of the items of the list is pointed twice, as shown on the image below.
 
-[![Loop in a Singly Linked List](/wp-content/uploads/2012/07/2.-Loop-in-a-Singly-Linked-List.png)](/wp-content/uploads/2012/07/2.-Loop-in-a-Singly-Linked-List.png) 
+[![Loop in a Singly Linked List](../images/2.-Loop-in-a-Singly-Linked-List.png)](../images/2.-Loop-in-a-Singly-Linked-List.png) 
 
 So in first place we need to be sure that there is a loop and then: how can we break it!
 
@@ -18,19 +18,19 @@ There are several algorithms on finding a loop, but here’s one very basic. It�
 
 The Floyd’s algorithm relies on one very simple idea. Initially we set two pointers to the head of the list. 
 
-[![Tortoise and Hare](/wp-content/uploads/2012/07/3.-Tortoise-and-Hare.png)](/wp-content/uploads/2012/07/3.-Tortoise-and-Hare.png) 
+[![Tortoise and Hare](../images/3.-Tortoise-and-Hare.png)](../images/3.-Tortoise-and-Hare.png) 
 
 On each step we increment both pointers, but the hare is incremented by two elements, while the tortoise walks on every single item – as shown on the images bellow.
 
-[![Hare](/wp-content/uploads/2012/07/4.-Hare.png)](/wp-content/uploads/2012/07/4.-Hare.png)The hare is fast and jumps by a pair of items at once!
+[![Hare](../images/4.-Hare.png)](../images/4.-Hare.png)The hare is fast and jumps by a pair of items at once!
 
 The tortoise, as it’s clear from the image bellow, is much slower.
 
-[![Tortoise](/wp-content/uploads/2012/07/5.-Tortoise.png)](/wp-content/uploads/2012/07/5.-Tortoise.png)The tortoise is much slower than the hare!
+[![Tortoise](../images/5.-Tortoise.png)](../images/5.-Tortoise.png)The tortoise is much slower than the hare!
 
 As a result if we don’t have a loop in the list the hare will hit the end of the list, but if we do have a loop the hare will catch-up the tortoise inside the loop.
 
-[![Movements](/wp-content/uploads/2012/07/6.-Movements.png)](/wp-content/uploads/2012/07/6.-Movements.png)Since the hare is faster and both the hare and the tortoise are in the loop – the faster pointer will catch-up the tortoise!
+[![Movements](../images/6.-Movements.png)](../images/6.-Movements.png)Since the hare is faster and both the hare and the tortoise are in the loop – the faster pointer will catch-up the tortoise!
 
 ## Code
 

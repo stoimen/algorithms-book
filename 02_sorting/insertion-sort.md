@@ -10,11 +10,11 @@ Insertion sort it is very intuitive method of sorting items and we often use it 
 
 So let’s say we have an array of data. In the first step the array is unordered, but we can say that it consists of two sub-sets: sorted and unordered, where on the first step the only item in the sorted sub-set is its first item. If the length of the array is n the algorithm is considered completed in n-1 steps. On each step our sorted subset is growing with one item. The thing is that we take the first item from the unordered sub-set and with some comparisons we put it into its place in the sorted sub-set, like on the diagram bellow.
 
-[![Main principle of insertion sort](/wp-content/uploads/2012/02/InsertionSortPrinciple.png)](/wp-content/uploads/2012/02/InsertionSortPrinciple.png)Main principle of insertion sort.
+[![Main principle of insertion sort](../images/InsertionSortPrinciple.png)](../images/InsertionSortPrinciple.png)Main principle of insertion sort.
 
 The insertion itself is the tricky part. We can insert the item once we find an item with a smaller value or if we have reached the front of the array like on the diagram bellow.
 
-[![Insertion sort example](/wp-content/uploads/2012/02/InsertionSort.png)](/wp-content/uploads/2012/02/InsertionSort.png)Example of insertion sort
+[![Insertion sort example](../images/InsertionSort.png)](../images/InsertionSort.png)Example of insertion sort
 
 ## Implementation
 
@@ -62,7 +62,7 @@ Just because we use searching the right position in an ordered array we can use 
 
 As I said this algorithm is not so effective. Its complexity is O(n2) which is far worse than the O(n*log(n)) of quicksort, as you can see on the diagram bellow. 
 
-[![n*n vs. n*log(n)](/wp-content/uploads/2012/02/InsertionSortComplexityChart.png)](/wp-content/uploads/2012/02/InsertionSortComplexityChart.png)n*n vs. n*log(n)
+[![n*n vs. n*log(n)](../images/InsertionSortComplexityChart.png)](../images/InsertionSortComplexityChart.png)n*n vs. n*log(n)
 
 ## Application
 

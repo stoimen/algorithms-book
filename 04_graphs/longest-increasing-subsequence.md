@@ -22,21 +22,21 @@ In fact the Bellman-Ford algorithm was able to detect negative cycles. That’s 
 
 In the other hand when we’re talking about [shortest paths in a DAG](/2012/10/28/computer-algorithms-shortest-path-in-a-directed-acyclic-graph/) (Directed Acyclic Graph) we can find a faster (linear) solution. That’s because we’re sure that there are no cycles (not even negative cycles)! 
 
-[![Toplogical Sort](/wp-content/uploads/2012/12/1.-Toplogical-Sort.png)](/wp-content/uploads/2012/12/1.-Toplogical-Sort.png) 
+[![Toplogical Sort](../images/1.-Toplogical-Sort.png)](../images/1.-Toplogical-Sort.png) 
 
 Finding the shortest paths in a DAG is closely related to the topological sorting of the DAG. This gives us a linear representation of the vertices of the DAG and we can clearly calculate the distances from the starting node to all other nodes. Note that in a DAG we have one or more nodes that can be considered as starting nodes – which means they don’t have predecessors (incoming edges).
 
-[![Toplogical Sort 2](/wp-content/uploads/2012/12/2.-Toplogical-Sort-2.png)](/wp-content/uploads/2012/12/2.-Toplogical-Sort-2.png) 
+[![Toplogical Sort 2](../images/2.-Toplogical-Sort-2.png)](../images/2.-Toplogical-Sort-2.png) 
 
 Following the words above is pretty hard to find what all these graph algorithms have to do with finding the longest increasing (decreasing) subsequence. Actually this problem is very closely related to the toplogical sort of the DAG and the problem of finding shortest paths in a DAG.
 
 That’s because we can represent our sequence as a DAG. The only thing we must care about is to “connect” with directed edges those elements that form an increasing (decreasing) pair. 
 
-[![Integer Sequence as a DAG](/wp-content/uploads/2012/12/3.-Integer-Sequence.png)](/wp-content/uploads/2012/12/3.-Integer-Sequence.png) 
+[![Integer Sequence as a DAG](../images/3.-Integer-Sequence.png)](../images/3.-Integer-Sequence.png) 
 
 Thus the sequence from our example [1, 8, 2, 7, 3, 4, 1, 6] is going to look like this.
 
-[![Longest subsequence](/wp-content/uploads/2012/12/4.-Longest-subsequence.png)](/wp-content/uploads/2012/12/4.-Longest-subsequence.png) 
+[![Longest subsequence](../images/4.-Longest-subsequence.png)](../images/4.-Longest-subsequence.png) 
 
 Another important thing to note is that we don’t search for shortest, but for longest path, since our task is to find the longest subsequence.
 

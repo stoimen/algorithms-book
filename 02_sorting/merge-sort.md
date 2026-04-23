@@ -8,19 +8,19 @@ So is it possible to sort a list of items by comparing their items faster than O
 
 The nature of those three algorithms mentioned above is that we almost compared each two items from initial list.
 
-[![Insertion sort and bubble sort make too many comparisons, exactly what merge sort tries to overcome!](/wp-content/uploads/2012/03/Principlesofprimitivesortingalgorithms.png)](/wp-content/uploads/2012/03/Principlesofprimitivesortingalgorithms.png)Insertion sort and bubble sort make too many comparisons, exactly what merge sort tries to overcome!
+[![Insertion sort and bubble sort make too many comparisons, exactly what merge sort tries to overcome!](../images/Principlesofprimitivesortingalgorithms.png)](../images/Principlesofprimitivesortingalgorithms.png)Insertion sort and bubble sort make too many comparisons, exactly what merge sort tries to overcome!
 
 This, of course, is not the best approach and we don’t need to do that. Instead we can try to divide the list into smaller lists and then sort them. After sorting the smaller lists, which is supposed to be easier than sorting the entire initial list, we can try to merge the result into one sorted list. This technique is typically known as “divide and conquer”.
 
 Normally if a problem is too difficult to solve, we can try to break it apart into smaller sub-sets of this problem and try to solve them. Then somehow we can merge the results of the solved problems. 
 
-[![If it's too difficult to sort a large list of items, we can break it apart into smaller sub-lists and try to sort them!](/wp-content/uploads/2012/03/Divideandconquer.png)](/wp-content/uploads/2012/03/Divideandconquer.png)If it's too difficult to sort a large list of items, we can break it apart into smaller sub-lists and try to sort them!
+[![If it's too difficult to sort a large list of items, we can break it apart into smaller sub-lists and try to sort them!](../images/Divideandconquer.png)](../images/Divideandconquer.png)If it's too difficult to sort a large list of items, we can break it apart into smaller sub-lists and try to sort them!
 
 ## Overview
 
 Merge sort is a comparison model sorting algorithm based on the “divide and conquer” principle. So far so good, so let’s say we have a very large list of data, which we want to sort. Obviously it will be better if we divide the list into two sub-lists with equal length and then sort them. If they remain too large, we can continue breaking them down until we get to something very easy to sort as shown on the diagram bellow.
 
-[![Merge sort is a typical example of divide and conquer technique!](/wp-content/uploads/2012/03/Mergepartinmergesort.png)](/wp-content/uploads/2012/03/Mergepartinmergesort.png)Merge sort is a typical example of divide and conquer technique!
+[![Merge sort is a typical example of divide and conquer technique!](../images/Mergepartinmergesort.png)](../images/Mergepartinmergesort.png)Merge sort is a typical example of divide and conquer technique!
 
 The thing is that on some step of the algorithm we have two sorted lists and the tricky part is to merge them. However this is not so difficult.
 
@@ -38,8 +38,8 @@ function merge_sort($arr)
 	if (count($arr)  0 && count($right) > 0) {  
 		if ($left[0] 2) in the worst case. So we can be sure that merge sort is very stable no matter the input.
 
-[![Merge sort complexity is O(n*log(n))](/wp-content/uploads/2012/03/mergesortcomplexity.png)](/wp-content/uploads/2012/03/mergesortcomplexity.png)Merge sort complexity is O(n*log(n))
-[![Merge sort complexity is O(n*log(n)) even in the worst case!](/wp-content/uploads/2012/03/SortingAlgorithmsComplexity.jpg)](/wp-content/uploads/2012/03/SortingAlgorithmsComplexity.jpg)Merge sort complexity is O(n*log(n)) even in the worst case!
+[![Merge sort complexity is O(n*log(n))](../images/mergesortcomplexity.png)](../images/mergesortcomplexity.png)Merge sort complexity is O(n*log(n))
+[![Merge sort complexity is O(n*log(n)) even in the worst case!](../images/SortingAlgorithmsComplexity.jpg)](../images/SortingAlgorithmsComplexity.jpg)Merge sort complexity is O(n*log(n)) even in the worst case!
 
 ## Two reasons why merge sort is useful
 
@@ -47,7 +47,7 @@ function merge_sort($arr)
 
 Merge sort is a great sorting algorithm mainly because it’s very fast and stable. It’s complexity is the same even in the worst case and it is O(n*log(n)). Note that even quicksort’s complexity is O(n2) in the worst case, which for n = 20 is about 4.6 times slower!
 
-[![Merge sort is about 4.6 times faster than quicksort for n = 20!](/wp-content/uploads/2012/03/mergesortvs.bubblesortforn20.png)](/wp-content/uploads/2012/03/mergesortvs.bubblesortforn20.png) 
+[![Merge sort is about 4.6 times faster than quicksort for n = 20!](../images/mergesortvs.bubblesortforn20.png)](../images/mergesortvs.bubblesortforn20.png) 
 
 ## 2. Easy implementation
 

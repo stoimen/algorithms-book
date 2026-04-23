@@ -6,11 +6,11 @@ What’s the fastest way to sort the following sequence [9, 3, 0, 5, 4, 1, 2, 6,
 
 First of all we can pass through all these integers and by using an auxiliary array we can just put them at their corresponding index. We know in advance that that is going to work really well, because they are all different.
 
-![Image](https://docs.google.com/drawings/pub?id=1Aoz2O_azhtnea-w_sVma0VRFD0x3QA1Qc2TfZkW1vk8&w=620&h=399)
+![Image](../images/google_drawing_9b23c0d48d.png)
 
 There is only one major problem in this solution. That’s because we assume all the integers are different. If not – we can just put all them in one single corresponding index.
 
-![Image](https://docs.google.com/drawings/pub?id=19NfzaQptazKwjjCOfoukXpbcL4ygNZUq5uXaUm7c3Mk&w=620&h=399)
+![Image](../images/google_drawing_3cf18aac81.png)
 
 That is why we can use bucket sort.
 
@@ -18,7 +18,7 @@ That is why we can use bucket sort.
 
 Bucket sort it’s the perfect sorting algorithm for the sequence above. We must know in advance that the integers are fairly well distributed over an interval (i, j). Then we can divide this interval in N equal sub-intervals (or buckets). We’ll put each number in its corresponding bucket. Finally for every bucket that contains more than one number we’ll use some linear sorting algorithm.
 
-![Image](https://docs.google.com/drawings/pub?id=19rpn5BY3JJOSpRPAJ9hpAoQeHVymxGxFNueuYCogmI4&w=620&h=399)
+![Image](../images/google_drawing_7c350480fa.png)
 
 The thing is that we know that the integers are well distributed, thus we expect that there won’t be many buckets with more than one number inside.
 

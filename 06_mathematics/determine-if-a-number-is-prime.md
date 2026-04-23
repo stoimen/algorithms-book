@@ -22,7 +22,7 @@ Beside that these implementations shows how we can find prime number, they are a
 
 Although the sieve of Eratosthenes isn’t the exact same approach (to check whether a number is prime) it can give us a list of prime numbers quite easily. To remove numbers that aren’t prime, we start with 2 and we remove every single item from the list that is divisible by two. Then we check for the rest items of the list, as shown on the picture below.
 
-![http://www.stoimen.com/blog/wp-content/uploads/2012/05/SieveofEratosthenes.png](/wp-content/uploads/2012/05/SieveofEratosthenes.png)
+![Sieve of Eratosthenes](../images/SieveofEratosthenes.png)
 
 The PHP implementation of the Eratosthenes sieve isn’t difficult.
 

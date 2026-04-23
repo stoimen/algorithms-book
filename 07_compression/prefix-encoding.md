@@ -19,7 +19,7 @@ uselessness
 
 Instead of keeping all these words in plain text or transferring all them over a network, we can compress (encode) them with prefix encoding. 
 
-[![Prefix Encoding](/wp-content/uploads/2012/02/Prefixencoding.png)](/wp-content/uploads/2012/02/Prefixencoding.png) 
+[![Prefix Encoding](../images/Prefixencoding.png)](../images/Prefixencoding.png) 
 
 It’s clear that each of these words begin with the prefix “use” which is also the first word from the list. So we can easily compress them into the following array.
 
@@ -105,7 +105,7 @@ Phone number prefixes can be also used for database normalization. Thus you can 
 
 Using the same example from [my previous post](/2012/01/30/computer-algorithms-data-compression-with-relative-encoding/) we can send GEO coordinates by removing a common prefix, for large levels of zoom. Indeed when you’ve to send lots of markers to your map application you can expect all of these markers to be fairly close to each other in large zoom level.
 
-[![NY Subway Map](/wp-content/uploads/2012/02/NY-map.png)](/wp-content/uploads/2012/02/NY-map.png)On large zoom levels we can expect markers to be with the same prefix.
+[![NY Subway Map](../images/NY-map.png)](../images/NY-map.png)On large zoom levels we can expect markers to be with the same prefix.
 
 Now the coordinates of those points can have a common prefix, like the example bellow with the Subway stations.
 

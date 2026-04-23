@@ -18,7 +18,7 @@ The stack and the queue are somehow related data structures as they represent tw
 
 The stack data structure models the real-world stack. You can think of it as stack of boxes one above the other. Thus the only way to put another item into the stack is to put it above all other items (on its top). This operation is often called “push”. In the other hand taking an item from the stack is called pop, and also only the highest item can be “poped”. The following image describes better the structure of the stack and its operations – push and pop.
 
-[![Stack Operations](/wp-content/uploads/2012/06/1.-Stack-Operations.png)](/wp-content/uploads/2012/06/1.-Stack-Operations.png)The operations of insert and delete an item from the stack are commonly called push and pop!
+[![Stack Operations](../images/1.-Stack-Operations.png)](../images/1.-Stack-Operations.png)The operations of insert and delete an item from the stack are commonly called push and pop!
 
 We see here how computer data structures model the real world. The stack data structure indeed makes no exception and models the real-world stacks.
 
@@ -194,7 +194,7 @@ echo $s;
 
 As mentioned above the queue is somehow related to the stack data structure. However it follows a different principle – FIFO (First In First Out), which means that the item that has been in the queue for the longest time is retrieved first.
 
-[![Queue Operations](/wp-content/uploads/2012/06/2.-Queue-Operations.png)](/wp-content/uploads/2012/06/2.-Queue-Operations.png)Inserting and deleting from a queue happen in the opposite sites of the queue!
+[![Queue Operations](../images/2.-Queue-Operations.png)](../images/2.-Queue-Operations.png)Inserting and deleting from a queue happen in the opposite sites of the queue!
 
 This comes again from the real world, where we can think of a queue of people waiting in front of a movie theater. In this case the person that has waited the most takes its ticket first.
 

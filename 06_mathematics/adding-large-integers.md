@@ -8,7 +8,7 @@ We know how to add two integers using a perfectly simple and useful algorithm le
 
 Let’s start by explaining how we humans add two numbers. An important fact is that by adding two single-digit numbers we get at most two digit number. This can be proven by simply realizing that 9+9 = 18. This fact lays down in the way we add integers. Here’s how.
 
-![Image](https://docs.google.com/drawings/pub?id=11pxzTffU-mVas5OYWiFg2sdSUAXa-QvBD1pSewNao3A&w=620&h=399)
+![Image](../images/google_drawing_ffd8fa8de5.png)
 
 We just line-up the integers on their right-most digit and we start adding them in a column. In case we got a sum greater than 9 (let’s say 14) we keep only the right-most digit (the 4) and the 1 is added to the next sum.
 
@@ -20,7 +20,7 @@ That fact is practically true, as I mentioned above, for each pair of n-digit in
 
 In fact binaries can be added by using the exact same algorithm. At the example below we add two integers represented as binary numbers.
 
-![Image](https://docs.google.com/drawings/pub?id=1E376ILBpXg5fUU8JbxiKwIcSa8DxSDtaIjqVsCJCjWk&w=620&h=399)
+![Image](../images/google_drawing_fe30779d4c.png)
 
 As a matter of fact this algorithm is absolutely wonderful, because it works not only on decimals and binaries but in any base B.
 

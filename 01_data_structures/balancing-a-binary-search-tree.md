@@ -4,11 +4,11 @@
 
 The [binary search tree](/2012/06/22/computer-algorithms-binary-search-tree-data-structure/) is a very useful data structure, where searching can be significantly faster than searching into a linked list. However in some cases searching into a binary tree can be as slow as searching into a linked list and this mainly depends on the input sequence. Indeed in case the input is sorted the binary tree will seem much like a linked list and the search will be slow. 
 
-[![Inserting into a binary search tree](/wp-content/uploads/2012/07/1.-Inserting-into-a-binary-search-tree.png)](/wp-content/uploads/2012/07/1.-Inserting-into-a-binary-search-tree.png)A binary search tree may seem much like a linked lists if the input is nearly sorted!
+[![Inserting into a binary search tree](../images/1.-Inserting-into-a-binary-search-tree.png)](../images/1.-Inserting-into-a-binary-search-tree.png)A binary search tree may seem much like a linked lists if the input is nearly sorted!
 
 To overcome this we must change a bit the data structure in order to stay well balanced. It’s intuitively clear that the searching process will be better if the tree is well branched. This is when finding an item will become faster with minimal effort.
 
-[![Balanced tree](/wp-content/uploads/2012/07/2.-Balanced-tree.png)](/wp-content/uploads/2012/07/2.-Balanced-tree.png)Searching into a balanced tree is significantly faster than searching into a non-balanced tree!
+[![Balanced tree](../images/2.-Balanced-tree.png)](../images/2.-Balanced-tree.png)Searching into a balanced tree is significantly faster than searching into a non-balanced tree!
 
 Since we know how to construct a binary search tree the only thing left is to keep it balanced. Obviously we will need to re-balance the tree on each insert and delete, which will make this data structure more difficult to maintain compared to non-balanced search trees, but searching into it will be significantly faster.
 
@@ -16,7 +16,7 @@ Since we know how to construct a binary search tree the only thing left is to ke
 
 In order to balance a tree we can go for the very basic and intuitive approach. First let’s take a look of one non-balanced tree.
 
-[![Balanced vs. Non-Balanced](/wp-content/uploads/2012/07/3.-Balanced-vs.-Non-Balanced.png)](/wp-content/uploads/2012/07/3.-Balanced-vs.-Non-Balanced.png)
+[![Balanced vs. Non-Balanced](../images/3.-Balanced-vs.-Non-Balanced.png)](../images/3.-Balanced-vs.-Non-Balanced.png)
 
 Compared to the balanced tree on the right from the image above with the same items we see that the root is approximately equal to its middle item. I.e. 4 is the middle item of the sequence [1,2,3,4,5,6,7]!
 
@@ -34,11 +34,11 @@ Of course the main problem of re-balancing a tree on each insert/delete is that 
 
 Normally we insert and re-balance on each step, which is slow. In the other hand we can do bulk insert forgetting about the re-balancing for a while. Only after the inserts are done we can go for re-balancing the entire tree.
 
-[![Bulk Insert with Only one Balance](/wp-content/uploads/2012/07/4.-Bulk-Insert-with-Only-one-Balance.png)](/wp-content/uploads/2012/07/4.-Bulk-Insert-with-Only-one-Balance.png)Doing bulk insert/delete and only one balancing will make the data structure faster!
+[![Bulk Insert with Only one Balance](../images/4.-Bulk-Insert-with-Only-one-Balance.png)](../images/4.-Bulk-Insert-with-Only-one-Balance.png)Doing bulk insert/delete and only one balancing will make the data structure faster!
 
 The same approach we can use with bulk delete. We can just set to NIL the items we want to delete, but we can keep them in memory for a while. Thus the search will stay relatively fast without rebalancing the tree. However this approach can be used carefully because we’ll keep some data in the memory without actually using it. 
 
-[![Bulk Delete](/wp-content/uploads/2012/07/5.-Bulk-Delete.png)](/wp-content/uploads/2012/07/5.-Bulk-Delete.png)We can NULL items without actually removing the pointers (links) and the structure of the tree!
+[![Bulk Delete](../images/5.-Bulk-Delete.png)](../images/5.-Bulk-Delete.png)We can NULL items without actually removing the pointers (links) and the structure of the tree!
 
 ## Implementation
 
@@ -351,7 +351,7 @@ echo $t->searchByKey(70);
 
 Compared to non-balanced binary search trees we’re sure that searching into a balanced trees is quick enough. The maximum height of the tree is log(n) so the worst-case searching is O(log(n)).
 
-[![BST Chart](/wp-content/uploads/2012/06/BST-Chart.png)](/wp-content/uploads/2012/06/BST-Chart.png)Compared to searching in linked lists in O(n) time, searching into a balanced binary tree is O(log(n)) in the worst-case scenario!
+[![BST Chart](../images/BST-Chart.png)](../images/BST-Chart.png)Compared to searching in linked lists in O(n) time, searching into a balanced binary tree is O(log(n)) in the worst-case scenario!
 
 ## Application
 

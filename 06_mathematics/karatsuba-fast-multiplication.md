@@ -14,11 +14,11 @@ That was easy but in some cases the calculations are a bit more difficult and we
 
 The algorithm we know from the primary school, described on the diagram below, is well structured and help us multiply two numbers.
 
-[![Typical Multiplication](/wp-content/uploads/2012/05/1.-Typical-Multiplication.png)](/wp-content/uploads/2012/05/1.-Typical-Multiplication.png)
+[![Typical Multiplication](../images/1.-Typical-Multiplication.png)](../images/1.-Typical-Multiplication.png)
 
 We see that even for two-digit numbers this is quite difficult – we have 4 multiplications and some additions.
 
-[![Number of Multiplications](/wp-content/uploads/2012/05/2.-Number-of-Multiplications.png)](/wp-content/uploads/2012/05/2.-Number-of-Multiplications.png)We need 4 multiplications in order to calculate the product of two 2-digit numbers!
+[![Number of Multiplications](../images/2.-Number-of-Multiplications.png)](../images/2.-Number-of-Multiplications.png)We need 4 multiplications in order to calculate the product of two 2-digit numbers!
 
 However so far we know how to multiply numbers, the only problem is that our task becomes very difficult as the numbers grow. If multiplying 65 by 97 was somehow easy, what about
 
@@ -182,7 +182,7 @@ echo karatsuba($x, $y);
 
 Assuming that we replace two of the multiplications with only one makes the program faster. The question is how fast. Karatsuba improves the multiplication process by replacing the initial complexity of O(n2) by O(nlg3), which as you can see on the diagram below is much faster for big n.
 
-[![Karatsuba Complexity](/wp-content/uploads/2012/05/Karatsuba-Complexity.png)](/wp-content/uploads/2012/05/Karatsuba-Complexity.png)O(n^2) grows much faster than O(n^lg3)
+[![Karatsuba Complexity](../images/Karatsuba-Complexity.png)](../images/Karatsuba-Complexity.png)O(n^2) grows much faster than O(n^lg3)
 
 ## Application
 

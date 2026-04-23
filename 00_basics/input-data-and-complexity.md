@@ -6,7 +6,7 @@ As we all know most of the cases a program execution time depends most from the 
 
 Of course 3*n² is a bit faster than 5*n², but in general both functions are similar and have the same complexity. In this case we tend to say that the size of the input data is n.
 
-[![Size of the input data](/wp-content/uploads/2010/09/input-data.jpg)](/wp-content/uploads/2010/09/input-data.jpg)The size of the input data affects the complexity of the algorithm
+[![Size of the input data](../images/input-data.jpg)](../images/input-data.jpg)The size of the input data affects the complexity of the algorithm
 
 It is easy to bind this to arrays or other simple data structures. For example when sorting an array with n elements, the size of the input data is n, but sometimes there is not such an obvious relation between an algorithm and the size of the input data.
 
@@ -14,6 +14,6 @@ For instance when we’ve to search a path into a graph, than maybe the best way
 
 ## Conclusion
 
-[![Think, think, think](/wp-content/uploads/2010/09/think.jpg)](/wp-content/uploads/2010/09/think.jpg)Think, think, think
+[![Think, think, think](../images/think.jpg)](../images/think.jpg)Think, think, think
 
 However this is important when dealing with algorithms, because a mistake in the estimation of the input data size will result in wrong algorithm estimation at all

@@ -24,7 +24,7 @@ That is why run-length encoding isn’t a good solution when compressing plain t
 
 After understanding the principles of the diagram encoding, let’s see some examples. In the example above it is better to replace doubled letters with something shorter. Let’s say # for “cc”, @ for “ss” and % for “ll”. Thus the input text will be compressed as “su#e@fu%y a#omplished”,  which is shorter. But yet again what will happen if the input message contains one of the substitutions? Also we can’t say if there are many doubled letters and enough reasonable substitutions for them. A better approach is to replace patterns. 
 
-[![Compressing texts with diagram encoding](/wp-content/uploads/2012/01/DiagramEncodingonTexts.png)](/wp-content/uploads/2012/01/DiagramEncodingonTexts.png)Run-length encoding isn't a good approach for text compression, because long runs rarely appear in a natural language.
+[![Compressing texts with diagram encoding](../images/DiagramEncodingonTexts.png)](../images/DiagramEncodingonTexts.png)Run-length encoding isn't a good approach for text compression, because long runs rarely appear in a natural language.
 
 ## Pattern Substitution
 
@@ -38,7 +38,7 @@ Clearly without knowing Latin it isn’t easy to define which are those commonly
 
 The second problem is related to decompression. It is obvious that we need to define a dictionary and this dictionary must be used when decoding the message. It will be great also if we find more patterns longer than three characters. If not, the compression ratio will be low. Unfortunately such patterns aren’t very common in any natural language.
 
-[![Text compression with diagram encoding and pattern substitution](/wp-content/uploads/2012/01/PatternSubstitutiononTexts.png)](/wp-content/uploads/2012/01/PatternSubstitutiononTexts.png)Diagram encoding and pattern substitution are far more suitable for text compression than run-length encoding. In fact, pattern substitution is very effective on compressing programming languages.
+[![Text compression with diagram encoding and pattern substitution](../images/PatternSubstitutiononTexts.png)](../images/PatternSubstitutiononTexts.png)Diagram encoding and pattern substitution are far more suitable for text compression than run-length encoding. In fact, pattern substitution is very effective on compressing programming languages.
 
 ## Application
 
@@ -82,4 +82,4 @@ $result = replace_patterns($str, $encoding_dict);
 
 By only replacing few CSS properties I achieved almost 40% of compression ratio (as shows the diagram bellow). The initial file is 202 KB, while compressed it’s only 131 KB. Of course, it all depends on the CSS file, but how about replacing all property names with shorter ones. Perhaps then the compression will be even better.
 
-[![CSS compression with pattern substitution](/wp-content/uploads/2012/01/chart_1.png)](/wp-content/uploads/2012/01/chart_1.png)
+[![CSS compression with pattern substitution](../images/chart_1.png)](../images/chart_1.png)

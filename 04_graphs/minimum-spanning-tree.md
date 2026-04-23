@@ -6,7 +6,7 @@ Here’s a classical task on graphs. We have a group of cities and we must wire 
 
 To wire N cities, it’s clear that, you need to use at least N-1 wires connecting a pair of cities. The problem is that sometimes you have more than one choice to do it. Even for small number of cities there must be more than one solution as shown on the image bellow. 
 
-[![General Wiring Problem](/wp-content/uploads/2012/11/1.-General-Wiring-Problem.png)](/wp-content/uploads/2012/11/1.-General-Wiring-Problem.png) 
+[![General Wiring Problem](../images/1.-General-Wiring-Problem.png)](../images/1.-General-Wiring-Problem.png) 
 
 Here we can wire these four nodes in several ways, but the question is, which one is the best one. By the way defining the term “best one” is also tricky. Most often this means which uses least wire, but it can be anything else depending on the circumstances.
 
@@ -20,7 +20,7 @@ Obviously we must choose those edges that are enough to connect all the vertices
 
 Does each connected and weighted graph have a minimum spanning tree? The answer is yes! By removing the cycles from the graph G we get a spanning tree, since it’s connected. From all possible spanning trees one or more are minimal. 
 
-[![MST on General Wiring Problem](/wp-content/uploads/2012/11/2.-General-Wiring-Problem.png)](/wp-content/uploads/2012/11/2.-General-Wiring-Problem.png) 
+[![MST on General Wiring Problem](../images/2.-General-Wiring-Problem.png)](../images/2.-General-Wiring-Problem.png) 
 
 If w(u, v) is the weight of the edge (u, v),  we can speak of weight of any spanning tree T – w(T) which is the sum of all the edges forming that tree. 
 
@@ -30,7 +30,7 @@ After we’re sure that there is at least one minimum spanning tree for all conn
 
 We can go with an incremental approach. At the end we’ll have the minimum spanning tree (MST), but before that on each step of our algorithm we’ll have a sub-set of this final tree, which will grow and grow until it becomes the real MST. This subset of edges we’ll keep in one additional set A.
 
-[![Growing the MST](/wp-content/uploads/2012/11/3.-Growing-the-MST.png)](/wp-content/uploads/2012/11/3.-Growing-the-MST.png) 
+[![Growing the MST](../images/3.-Growing-the-MST.png)](../images/3.-Growing-the-MST.png) 
 
 So far we know that on each step we have a subset of the final MST, but first we need to answer a couple of questions. 
 
@@ -38,7 +38,7 @@ So far we know that on each step we have a subset of the final MST, but first we
 
 Well, we’ll start with the empty set of edges. Clearly the empty set is a subset of any other set, thus it will be also a subset of the MST.
 
-[![Start with the empty set](/wp-content/uploads/2012/11/4.-Start-with-the-empty-set.png)](/wp-content/uploads/2012/11/4.-Start-with-the-empty-set.png) 
+[![Start with the empty set](../images/4.-Start-with-the-empty-set.png)](../images/4.-Start-with-the-empty-set.png) 
 
 ## How do we grow the tree?
 
@@ -50,13 +50,13 @@ Clearly we must make a decision which edge to add to the growing subset and this
 
 To find the minimum spanning tree on each step we must get the lowest weighted edge that connects our subset (A) with the rest of the vertices.
 
-[![Chose the lowest weighted edge](/wp-content/uploads/2012/11/5.-Chose-the-lowest-weighted-edge.png)](/wp-content/uploads/2012/11/5.-Chose-the-lowest-weighted-edge.png) 
+[![Chose the lowest weighted edge](../images/5.-Chose-the-lowest-weighted-edge.png)](../images/5.-Chose-the-lowest-weighted-edge.png) 
 
 However can we be sure that by choosing the less weighted edge we’ll get the MST? Well, let’s assume that isn’t right in order to prove that wrong!
 
 OK so on some step of our growing sub-tree we don’t get the lightest edge (u, v), because we somehow doubt this rule, and we get another edge – let’s say (x, y). Mind that w(x, y) >= w(u, v). 
 
-[![Weights of edges](/wp-content/uploads/2012/11/6.-Weights-of-edges.png)](/wp-content/uploads/2012/11/6.-Weights-of-edges.png) 
+[![Weights of edges](../images/6.-Weights-of-edges.png)](../images/6.-Weights-of-edges.png) 
 
 Thus our final MST will contain somewhere in its set of edges the edge (x, y), but the weight of MST w(T) is minimal, and if we get another spanning tree that contains the exact same edges as T but instead of (x, y) contains (u, v) we’ll get a smaller weight!
 

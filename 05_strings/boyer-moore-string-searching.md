@@ -18,11 +18,11 @@ Boyer-Moore is an algorithm that improves the performance of pattern searching i
 
 First of all this algorithm starts comparing the pattern from the leftmost part of text and moves it to the right, as on the picture below.
 
-[![Boyer-Moore Shifting Direction](/wp-content/uploads/2012/04/Boyer-MooreShiftingDirection.png)](/wp-content/uploads/2012/04/Boyer-MooreShiftingDirection.png)In Boyer-Moore the pattern is shifted from left to right!
+[![Boyer-Moore Shifting Direction](../images/Boyer-MooreShiftingDirection.png)](../images/Boyer-MooreShiftingDirection.png)In Boyer-Moore the pattern is shifted from left to right!
 
 Unlike other string searching algorithms though, Boyer-Moore compares the pattern against a possible match from right to left as shown below.
 
-[![Boyer-Moore Comparison Model](/wp-content/uploads/2012/04/Boyer-MooreComparisonModel.png)](/wp-content/uploads/2012/04/Boyer-MooreComparisonModel.png)Unlike other algorithms the letters of the pattern are compared from right to left!
+[![Boyer-Moore Comparison Model](../images/Boyer-MooreComparisonModel.png)](../images/Boyer-MooreComparisonModel.png)Unlike other algorithms the letters of the pattern are compared from right to left!
 
 The main idea of Boyer-Moore in order to improve the performance are some observations of the pattern. In the terminology of this algorithm they are called good-suffix and bad-character shifts. Let’s see by the following examples what they are standing for.
 
@@ -30,23 +30,23 @@ The main idea of Boyer-Moore in order to improve the performance are some observ
 
 Just like the Morris-Pratt algorithm we start to compare the pattern against some portion of the text where a possible match will occur. In Boyer-Moore as I said this is done from the rightmost letter of the pattern. After some characters have matched we find a mismatch.
 
-[![Boyer-Moore a Mismatch](/wp-content/uploads/2012/04/Boyer-MooreAMismatch.png)](/wp-content/uploads/2012/04/Boyer-MooreAMismatch.png) 
+[![Boyer-Moore a Mismatch](../images/Boyer-MooreAMismatch.png)](../images/Boyer-MooreAMismatch.png) 
 
 So how can we move the pattern to the right in order to skip unusual comparisons. To answer this question we need to explore the pattern. Let’s say there is a portion of the pattern that is repeated inside the pattern itself, like it is shown on the picture below.
 
-[![Boyer-Moore Good-suffix Shift 1](/wp-content/uploads/2012/04/Boyer-MooreGood-suffixShift1.png)](/wp-content/uploads/2012/04/Boyer-MooreGood-suffixShift1.png)The pattern may consist of repeating portions of characters!
+[![Boyer-Moore Good-suffix Shift 1](../images/Boyer-MooreGood-suffixShift1.png)](../images/Boyer-MooreGood-suffixShift1.png)The pattern may consist of repeating portions of characters!
 
 In this case we must move the pattern thus the repeated portion must now align with its first occurrence in the pattern.
 
 A variation of this case is when the portion from the pattern A overlaps with another portion that consists of the same characters.
 
-[![Boyer-Moore Good Suffix Shift 2](/wp-content/uploads/2012/04/Boyer-MooreGoodSuffixShift2.png)](/wp-content/uploads/2012/04/Boyer-MooreGoodSuffixShift2.png)Sometimes these portions may overlap!
+[![Boyer-Moore Good Suffix Shift 2](../images/Boyer-MooreGoodSuffixShift2.png)](../images/Boyer-MooreGoodSuffixShift2.png)Sometimes these portions may overlap!
 
 Yet again the shift must align the second portion with its first occurrence. 
 
 Finally only a portion of A, let’s say “B”, can happen to occur in the very beginning of the pattern, as on the diagram below.
 
-[![Boyer-Moore Good Suffix Shift 3](/wp-content/uploads/2012/04/Boyer-MooreGoodSuffixShift3.png)](/wp-content/uploads/2012/04/Boyer-MooreGoodSuffixShift3.png)Only a sub-string of the pattern may re-occur at its front!
+[![Boyer-Moore Good Suffix Shift 3](../images/Boyer-MooreGoodSuffixShift3.png)](../images/Boyer-MooreGoodSuffixShift3.png)Only a sub-string of the pattern may re-occur at its front!
 
 Now we must align the left end of the pattern with the rightmost occurrence of “B”.
 
@@ -54,11 +54,11 @@ Now we must align the left end of the pattern with the rightmost occurrence of �
 
 Beside the good-suffix shifts the Boyer-Moore algorithm make use of the so called bad-character shifts. In case of a mismatch we can skip comparisons in case the character in the text doesn’t happen to appear in the pattern. To become clearer let’s see the following examples.
 
-[![Boyer-Moore Bad Character 1](/wp-content/uploads/2012/04/Boyer-MooreBadCharacter1.png)](/wp-content/uploads/2012/04/Boyer-MooreBadCharacter1.png)If the mismatched letter of the text appears in the pattern only in its front we can align it easily!
+[![Boyer-Moore Bad Character 1](../images/Boyer-MooreBadCharacter1.png)](../images/Boyer-MooreBadCharacter1.png)If the mismatched letter of the text appears in the pattern only in its front we can align it easily!
 
 In the picture above we see that the mismatched character “B” from the text appears only in the beginning of the pattern. Thus we can simply shift the pattern to the right and align both characters B, skipping comparisons. An even better case is described by the following diagram where the mismatched letter isn’t contained into the pattern at all. Then we can shift forward the whole pattern.
 
-[![Boyer-Moore Bad Character 2](/wp-content/uploads/2012/04/Boyer-MooreBadCharacter2.png)](/wp-content/uploads/2012/04/Boyer-MooreBadCharacter2.png)In case the mismatched letter isn't contained into the pattern we move forward the pattern!
+[![Boyer-Moore Bad Character 2](../images/Boyer-MooreBadCharacter2.png)](../images/Boyer-MooreBadCharacter2.png)In case the mismatched letter isn't contained into the pattern we move forward the pattern!
 
 ## Maximum of Good-suffix and Bad-Character shifts
 
@@ -68,7 +68,7 @@ Boyer-Moore needs both good-suffix and bad-character shifts in order to speed up
 
 It’s clear that Boyer-Moore is faster than Morris-Pratt, but actually its worst-case complexity is O(n+m). The thing is that in natural language search Boyer-Moore does pretty well.
 
-[![Boyer-Moore Complexity](/wp-content/uploads/2012/04/Boyer-Moore-Complexity.png)](/wp-content/uploads/2012/04/Boyer-Moore-Complexity.png)Worst-case scenario of Boyer-Moore - O(m+n)
+[![Boyer-Moore Complexity](../images/Boyer-Moore-Complexity.png)](../images/Boyer-Moore-Complexity.png)Worst-case scenario of Boyer-Moore - O(m+n)
 
 ## Implementation
 
@@ -97,4 +97,4 @@ function badCharacters($pattern, &$badChars)
    for ($i = 0; $i = 0; $i--) {
       if ($suff[$i] == $i + 1) {
          for ($j = 0; $j = 0 && $pattern[$i] == $text[$i + $j]; $i--);
-      if ($i [![Boyer-Moore Application](/wp-content/uploads/2012/04/Boyer-MooreApplication.png)](/wp-content/uploads/2012/04/Boyer-MooreApplication.png)
+      if ($i [![Boyer-Moore Application](../images/Boyer-MooreApplication.png)](../images/Boyer-MooreApplication.png)

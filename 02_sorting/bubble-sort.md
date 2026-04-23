@@ -8,31 +8,31 @@ Bubble sort consists of comparing each pair of adjacent items. Then one of those
 
 ## 1. Each two adjacent elements are compared
 
-[![In bubble sort we](/wp-content/uploads/2012/02/BubbleSortStep1CompareTwoElements1.png)](/wp-content/uploads/2012/02/BubbleSortStep1CompareTwoElements1.png)In bubble sort we've to compare each two adjacent elements
+[![In bubble sort we](../images/BubbleSortStep1CompareTwoElements1.png)](../images/BubbleSortStep1CompareTwoElements1.png)In bubble sort we've to compare each two adjacent elements
 
 Here “2” appears to be less than “4”, so it is considered lighter and it continues to bubble to the surface (the front of the array).
 
 ## 2. Swap with heavier elements
 
-[![If heavier elements appear on the way we should swap them](/wp-content/uploads/2012/02/BubbleSortStep2AnElementStartstoBubble.png)](/wp-content/uploads/2012/02/BubbleSortStep2AnElementStartstoBubble.png)If heavier elements appear on the way we should swap them
+[![If heavier elements appear on the way we should swap them](../images/BubbleSortStep2AnElementStartstoBubble.png)](../images/BubbleSortStep2AnElementStartstoBubble.png)If heavier elements appear on the way we should swap them
 
 On his way to the surface the currently lightest item meets a heavier element. Then they swap places.
 
 ## 3. Move forward and swap with each heavier item
 
-[![Swapping is slow and that is the main reason not to use bubble sort](/wp-content/uploads/2012/02/BubbleSortStep3ALighterElementStartstoBubble.png)](/wp-content/uploads/2012/02/BubbleSortStep3ALighterElementStartstoBubble.png)Swapping is slow and that is the main reason not to use bubble sort
+[![Swapping is slow and that is the main reason not to use bubble sort](../images/BubbleSortStep3ALighterElementStartstoBubble.png)](../images/BubbleSortStep3ALighterElementStartstoBubble.png)Swapping is slow and that is the main reason not to use bubble sort
 
 The problem with bubble sort is that you may have to swap a lot of elements.
 
 ## 4. If there is a lighter element, then this item begins to bubble to the surface
 
-[![We can be sure that on each step the algorithm bubbles the lightest element so far](/wp-content/uploads/2012/02/BubbleSortStep4ALighterElementStartstoBubble.png)](/wp-content/uploads/2012/02/BubbleSortStep4ALighterElementStartstoBubble.png)We can be sure that on each step the algorithm bubbles the lightest element so far
+[![We can be sure that on each step the algorithm bubbles the lightest element so far](../images/BubbleSortStep4ALighterElementStartstoBubble.png)](../images/BubbleSortStep4ALighterElementStartstoBubble.png)We can be sure that on each step the algorithm bubbles the lightest element so far
 
 If the currently lightest element meets another item that is lighter, then the newest currently lightest element starts to bubble to the top.
 
 ## 5. Finally the lightest element is on its place
 
-[![Finally the list begins to look sorted](/wp-content/uploads/2012/02/BubbleSortStep5Themostlightelementisonitsplace.png)](/wp-content/uploads/2012/02/BubbleSortStep5Themostlightelementisonitsplace.png)Finally the list begins to look sorted
+[![Finally the list begins to look sorted](../images/BubbleSortStep5Themostlightelementisonitsplace.png)](../images/BubbleSortStep5Themostlightelementisonitsplace.png)Finally the list begins to look sorted
 
 At the end of each iteration we can be sure that the lightest element is on the right place – at the beginning of the list.
 
@@ -54,11 +54,11 @@ function bubble_sort($arr)
 	for ($i = 0; $i  $i; $j--) {
 			if ($arr[$j] 2) which can’t be worse. It’s weird that the most well known sorting algorithm is the slowest one.
 
-[![Bubble sort compared to quicksort, merge sort and heapsort in the average case](/wp-content/uploads/2012/02/BubbleSortComparedToOthers.png)](/wp-content/uploads/2012/02/BubbleSortComparedToOthers.png)Bubble sort compared to quicksort, merge sort and heapsort in the average case
+[![Bubble sort compared to quicksort, merge sort and heapsort in the average case](../images/BubbleSortComparedToOthers.png)](../images/BubbleSortComparedToOthers.png)Bubble sort compared to quicksort, merge sort and heapsort in the average case
 
 Even for small values of n, the number of comparisons and swaps can be tremendous.
 
-[![stats](/wp-content/uploads/2012/02/BubbleSortStats-2.png)](/wp-content/uploads/2012/02/BubbleSortStats-2.png)Bubble sort is three times slower than quicksort even for n = 100, but it's easier to impelemnt
+[![stats](../images/BubbleSortStats-2.png)](../images/BubbleSortStats-2.png)Bubble sort is three times slower than quicksort even for n = 100, but it's easier to impelemnt
 
 Another problem is that most of the languages (libraries) have built-in sorting functions, that they don’t make use of bubble sort and are faster for sure. So why a developer should implement bubble sort at all?
 

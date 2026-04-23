@@ -22,7 +22,7 @@ The general algorithm on multiplying two matrices A[NxN] and B[NxN] is fairly si
 
 Let’s first define what’s a matrix A[NxN]. As we speak about matrices NxN we usually think of a square grid with N rows and N columns. In each row and column A[i][j] we’ve a value. 
 
-[![Square matrix](/wp-content/uploads/2012/11/1.-Square-matrix.png)](/wp-content/uploads/2012/11/1.-Square-matrix.png) 
+[![Square matrix](../images/1.-Square-matrix.png)](../images/1.-Square-matrix.png) 
 
 Of course, as developers, we can think of a matrix as a two-dimensional array.
 
@@ -41,15 +41,15 @@ However the size of a matrix is crucial in order to multiply it with another mat
 
 As I said above multiplying matrices isn’t the same as multiplying numbers. First of all this operation isn’t commutative.
 
-[![Commutative problem](/wp-content/uploads/2012/11/2.-Commutative-problem.png)](/wp-content/uploads/2012/11/2.-Commutative-problem.png) 
+[![Commutative problem](../images/2.-Commutative-problem.png)](../images/2.-Commutative-problem.png) 
 
 And the second problem is the way you multiply two matrices A with B.
 
-[![Matrix Multiplication](/wp-content/uploads/2012/11/3.-Matrix-Multiplication.png)](/wp-content/uploads/2012/11/3.-Matrix-Multiplication.png) 
+[![Matrix Multiplication](../images/3.-Matrix-Multiplication.png)](../images/3.-Matrix-Multiplication.png) 
 
 Just because this works with NxN matrices we can see the problem with multiplying rectangular matrices. Indeed, this wouldn’t be possible unless the second dimension of A isn’t exactly equal to the first dimension of B. 
 
-[![Rectangular Matrix Multiplication](/wp-content/uploads/2012/11/4.-Rect-Matrix-Multiplication.png)](/wp-content/uploads/2012/11/4.-Rect-Matrix-Multiplication.png) 
+[![Rectangular Matrix Multiplication](../images/4.-Rect-Matrix-Multiplication.png)](../images/4.-Rect-Matrix-Multiplication.png) 
 
 Hopefully we are now talking about square matrices with exactly the same dimensions.
 
@@ -63,17 +63,17 @@ Thus we have n^3 operations. Let’s try to find out a divide and conquer approa
 
 Indeed this isn’t difficult in case of matrices because as we know we can divide in matrix in smaller sub-matrices.
 
-[![Divide and Conquer](/wp-content/uploads/2012/11/5.-Divide-and-Conquer.png)](/wp-content/uploads/2012/11/5.-Divide-and-Conquer.png) 
+[![Divide and Conquer](../images/5.-Divide-and-Conquer.png)](../images/5.-Divide-and-Conquer.png) 
 
 Now what do we have?
 
-[![Divide and Conquer Result](/wp-content/uploads/2012/11/6.-Divide-and-Conquer-Result.png)](/wp-content/uploads/2012/11/6.-Divide-and-Conquer-Result.png) 
+[![Divide and Conquer Result](../images/6.-Divide-and-Conquer-Result.png)](../images/6.-Divide-and-Conquer-Result.png) 
 
 Again – the same complexity – we have 8 products and 4 sums. Where’s the catch? 
 
 Of course in order to get faster solution we’ve to be looking as Strassen did in 1969. He defined P1, P2, P3, P4, P5, P6 and P7 as defined on the image below.
 
-[![Strassen's Algorithm](/wp-content/uploads/2012/11/7.-Strassens-Algorithm.png)](/wp-content/uploads/2012/11/7.-Strassens-Algorithm.png) 
+[![Strassen's Algorithm](../images/7.-Strassens-Algorithm.png)](../images/7.-Strassens-Algorithm.png) 
 
 ## Complexity
 
@@ -81,7 +81,7 @@ As I mentioned above the Strassen’s algorithm is slightly faster than the gene
 
 You can see on the chart below how slightly faster is this even for large n.
 
-[![Strassen's Complexity](/wp-content/uploads/2012/11/Strassens-Complexity.png)](/wp-content/uploads/2012/11/Strassens-Complexity.png) 
+[![Strassen's Complexity](../images/Strassens-Complexity.png)](../images/Strassens-Complexity.png) 
 
 ## Application
 

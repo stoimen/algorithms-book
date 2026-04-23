@@ -6,21 +6,21 @@ We already know what’s topological sort of a directed acyclic graph. So why do
 
 We have a directed acyclic graph (DAG). There are no cycles so we must go for some kind of order putting all the vertices of the graph in such an order, that if there’s a directed edge (u, v), u must precede v in that order. 
 
-[![Topological Sort](/wp-content/uploads/2012/12/1.-Topological-Sort.png)](/wp-content/uploads/2012/12/1.-Topological-Sort.png) 
+[![Topological Sort](../images/1.-Topological-Sort.png)](../images/1.-Topological-Sort.png) 
 
 The process of putting all the vertices of the DAG in such an order is called topological sorting. It’s commonly used in task scheduling or while finding the shortest paths in a DAG.
 
 The algorithm itself is pretty simple to understand and code. We must start from the vertex (vertices) that don’t have predecessors. 
 
-[![Topological Sort - step 1](/wp-content/uploads/2012/12/2.-Topological-Sort-step-1.png)](/wp-content/uploads/2012/12/2.-Topological-Sort-step-1.png) 
+[![Topological Sort - step 1](../images/2.-Topological-Sort-step-1.png)](../images/2.-Topological-Sort-step-1.png) 
 
 We put them in our sorted list in random order. Since they don’t depend on each other we can assume they are equally sorted already. Indeed thinking of a task schedule if there are tasks that don’t have predecessors (they don’t depend on other tasks before them) and that don’t depend on each other we can put them in random order (and execute them in random order).
 
-[![Topological Sort - Order](/wp-content/uploads/2012/12/3.-Topological-Sort-Order.png)](/wp-content/uploads/2012/12/3.-Topological-Sort-Order.png) 
+[![Topological Sort - Order](../images/3.-Topological-Sort-Order.png)](../images/3.-Topological-Sort-Order.png) 
 
 Once we have the vertices with no predecessors we must remove the edges starting from them. Then – go again with the vertices with no predecessors. 
 
-[![Topological Sort - step 2](/wp-content/uploads/2012/12/4.-Topological-Sort-step-2.png)](/wp-content/uploads/2012/12/4.-Topological-Sort-step-2.png) 
+[![Topological Sort - step 2](../images/4.-Topological-Sort-step-2.png)](../images/4.-Topological-Sort-step-2.png) 
 
 It’s as simple as that, so why do we need a revision of this algorithm? Well, basically because of its efficiency. 
 
@@ -28,11 +28,11 @@ It’s as simple as that, so why do we need a revision of this algorithm? Well, 
 
 As we know most of the graph algorithms depend on the way the graph is represented in our application. We consider as the two main representations the adjacency matrix … 
 
-[![Adjacency Matrix](/wp-content/uploads/2012/12/5.-Adjacency-Matrix.png)](/wp-content/uploads/2012/12/5.-Adjacency-Matrix.png) 
+[![Adjacency Matrix](../images/5.-Adjacency-Matrix.png)](../images/5.-Adjacency-Matrix.png) 
 
 … and adjacency lists.
 
-[![Adjacency Lists](/wp-content/uploads/2012/12/6.-Adjacency-Lists.png)](/wp-content/uploads/2012/12/6.-Adjacency-Lists.png) 
+[![Adjacency Lists](../images/6.-Adjacency-Lists.png)](../images/6.-Adjacency-Lists.png) 
 
 Let’s first take a look of some of the main approaches to get the topologically sorted list at the end of the algorithm. 
 
@@ -52,7 +52,7 @@ Practically we can start by picking up a random vertex and “go back” until w
 
 This means that we can modify the algorithm a bit in order to improve a lot the algorithm. We just need to store both incoming and outgoing edges and slightly modify the adjacency lists.
 
-[![Modified Adjacency Lists](/wp-content/uploads/2012/12/7.-Modified-Adjacency-Lists.png)](/wp-content/uploads/2012/12/7.-Modified-Adjacency-Lists.png) 
+[![Modified Adjacency Lists](../images/7.-Modified-Adjacency-Lists.png)](../images/7.-Modified-Adjacency-Lists.png) 
 
 What’s the algorithm now?
 

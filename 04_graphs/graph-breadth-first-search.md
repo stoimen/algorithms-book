@@ -6,7 +6,7 @@ Since we already know [how to represent graphs](/2012/08/31/computer-algorithms-
 
 First thing to note is that graphs are not trees, in most of the cases, so walking through them can’t start from a root, as we do with trees. What we must do first is to decide from where to start – in other words – choosing a starting vertex. 
 
-[![BFS Choosing a Starting Point](/wp-content/uploads/2012/09/1.-BFS-Choosing-a-Starting-Point.png)](/wp-content/uploads/2012/09/1.-BFS-Choosing-a-Starting-Point.png)It’s clear that depending on the starting point we can get different passes through the graph. Thus choosing a starting point can be very important for our algorithm!
+[![BFS Choosing a Starting Point](../images/1.-BFS-Choosing-a-Starting-Point.png)](../images/1.-BFS-Choosing-a-Starting-Point.png)It’s clear that depending on the starting point we can get different passes through the graph. Thus choosing a starting point can be very important for our algorithm!
 
 After that we need to know how to proceed. There are two approaches mostly known as “breadth first” and “depth first” search. While depth first search start from a vertex and goes as far as possible, then walks back and passes through vertices that haven’t been visited yet, breath first search is an approach of passing through all the neighbors of the node first, and then go to the next level.
 
@@ -14,11 +14,11 @@ After that we need to know how to proceed. There are two approaches mostly known
 
 We can thing of breadth first search as a “wave” walk through the graph. In other words we go level by level, as shown on the picture below.
 
-[![BFS Wave](/wp-content/uploads/2012/09/2.-BFS-Wave.png)](/wp-content/uploads/2012/09/2.-BFS-Wave.png)For this very specific graph on the picture we can see how breadth first search walks through the graph level by level!
+[![BFS Wave](../images/2.-BFS-Wave.png)](../images/2.-BFS-Wave.png)For this very specific graph on the picture we can see how breadth first search walks through the graph level by level!
 
 Initially we mark all vertices as unvisited. A common approach is to create an empty queue where we put the vertices level by level, starting with the initial vertex.
 
-[![BFS Using a Queue](/wp-content/uploads/2012/09/3.-BFS-Using-a-Queue.png)](/wp-content/uploads/2012/09/3.-BFS-Using-a-Queue.png)Using a queue is a typical approach for breadth first search! However this requires more space!
+[![BFS Using a Queue](../images/3.-BFS-Using-a-Queue.png)](../images/3.-BFS-Using-a-Queue.png)Using a queue is a typical approach for breadth first search! However this requires more space!
 
 ## Code
 

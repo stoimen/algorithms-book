@@ -4,7 +4,7 @@
 
 To find the minimum value into an array of items itsn’t difficult. There are not many options to do that. The most natural approach is to take the first item and to compare its value against the values of all other elements. Once we find a smaller element we continue the comparisons with its value. Finally we find the minimum.
 
-[![Find a Minimum](/wp-content/uploads/2012/05/1.-Find-a-Minimum.png)](/wp-content/uploads/2012/05/1.-Find-a-Minimum.png)
+[![Find a Minimum](../images/1.-Find-a-Minimum.png)](../images/1.-Find-a-Minimum.png)
 
 First thing to note is that we pass through the array with n steps and we need exactly n-1 comparisons. It’s clear that this is the optimal solution, because we must check all the elements. For sure we can’t be sure that we’ve found the minimum (maximum) value without checking every single value.
 
@@ -12,13 +12,13 @@ First thing to note is that we pass through the array with n steps and we need e
 
 The algorithm above is very simple and we’re sure that it is optimal. Obviously finding both the minimum and the maximum value is O(n) with n-1 comparisons, but what about combining these tasks into one single pass.
 
-[![Find a Maximum](/wp-content/uploads/2012/05/2.-Find-a-Maximum.png)](/wp-content/uploads/2012/05/2.-Find-a-Maximum.png)Finding the maximum is identical to finding the minimum and requires n-1 comparisons!
+[![Find a Maximum](../images/2.-Find-a-Maximum.png)](../images/2.-Find-a-Maximum.png)Finding the maximum is identical to finding the minimum and requires n-1 comparisons!
 
 Since they both are O(n) and need n-1 comparisons it’s natural to think that combining the two tasks will be O(n) and 2n – 2 comparisons. However we can reduce the number of comparisons!
 
 Instead of taking only one item from the array and comparing it against the minimum and maximum we can take a pair of items at each step. Thus we can first compare them and then compare the smaller value with the currently smallest value and the greater item with the currently greatest value. This will make only 3 comparisons instead of 4.
 
-[![Both minimum and maximum with less comparisons!](/wp-content/uploads/2012/05/3.-Find-both-minimum-and-maximum.png)](/wp-content/uploads/2012/05/3.-Find-both-minimum-and-maximum.png)
+[![Both minimum and maximum with less comparisons!](../images/3.-Find-both-minimum-and-maximum.png)](../images/3.-Find-both-minimum-and-maximum.png)
 
 ## Implementation
 

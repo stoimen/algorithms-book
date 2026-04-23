@@ -10,7 +10,7 @@ Since we speak about integers, we can think of a faster sorting algorithm than u
 
 Count sort is absolutely brilliant and easy to implement. In case we sort integers in the range [n, m] on the first pass we just initialize a zero filled array with length m-n. Than on the second pass we “count” the occurrence of each integer. On the third pass we just sort the integers with an ease. 
 
-![Image](https://docs.google.com/drawings/pub?id=1VOyJ9u_sp5YQB6gpt0bcWFOKjYTSugoQWJYRkFFZTLc&w=620&h=399)
+![Image](../images/google_drawing_683291c84e.png)
 
 However we have some problems with that algorithm. What if we have only few items to sort that are very far from each other like [2, 1, 10000000, 2]. This will result in a very large unused data. So we need a dense integer sequence. This is important because we must know in advance the nature of the sequence which is rarely sure.
 
@@ -40,13 +40,13 @@ In the radix sort example, we need a stable sort algorithm, because we need to w
 
 So what happens in our example after we sort the sequence? 
 
-![Image](https://docs.google.com/drawings/pub?id=10dVPfCVf8YI2sEJNuAujnrOx0g0RxWGsQdTJ0xqGt1k&w=620&h=399)
+![Image](../images/google_drawing_987d4cec2b.png)
 
 As we can see we’re far from a sorted sequence, but what if we proceed with the next “position” – the decimal digit?
 
 Than we end up with this:
 
-![Image](https://docs.google.com/drawings/pub?id=1oaKToHilxrKyGJzwm7NvmrSaL3uVRO3R7r0RCb0jrR4&w=621&h=264)
+![Image](../images/google_drawing_00de8ede77.png)
 
 Now we have a sorted sequence, so let’s summarize the algorithm in a short pseudo code.
 

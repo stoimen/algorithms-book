@@ -6,11 +6,11 @@ One of the two main algorithms in [finding the minimum spanning tree](/2012/11/0
 
 We have a weighted graph and of all spanning trees we’d like to find the one with minimal weight. As an example on the picture above you see a spanning tree (T) on the graph (G), but that isn’t the minimum weight spanning tree!
 
-[![A graph and a possible spanning tree](/wp-content/uploads/2012/11/1.-A-graph-and-a-possible-spanning-tree.png)](/wp-content/uploads/2012/11/1.-A-graph-and-a-possible-spanning-tree.png) 
+[![A graph and a possible spanning tree](../images/1.-A-graph-and-a-possible-spanning-tree.png)](../images/1.-A-graph-and-a-possible-spanning-tree.png) 
 
 We can think of a group of islands and the possible connections of bridges connecting them. Of course building bridges is expensive and time consuming, so we must be aware of what kind of bridges we want to build. Nevertheless there is an important question, what’s the minimum price we’d like to pay to build such set of bridges connecting all the islands. 
 
-[![Islands and bridges](/wp-content/uploads/2012/11/2.-Islands-and-bridges.png)](/wp-content/uploads/2012/11/2.-Islands-and-bridges.png) 
+[![Islands and bridges](../images/2.-Islands-and-bridges.png)](../images/2.-Islands-and-bridges.png) 
 
 Thus we practically need to build a minimum spanning tree, where the vertices will be the islands, while the edges will be the possible bridges between them. Every possible bridge has a weight (the price or the time we need to build it, etc.).
 
@@ -22,25 +22,25 @@ The two main approaches – the Kruskal’s and the Prim’s algorithms however 
 
 The algorithm of Kruskal starts by initializing a set of |V| trees. 
 
-[![A set of V trees](/wp-content/uploads/2012/11/3.-A-set-of-V-trees.png)](/wp-content/uploads/2012/11/3.-A-set-of-V-trees.png) 
+[![A set of V trees](../images/3.-A-set-of-V-trees.png)](../images/3.-A-set-of-V-trees.png) 
 
 During the process of building the final spanning tree we keep a forest. Obviously we start with a forest with |V| trees, where each tree is a single node tree.
 
-[![A single node tree](/wp-content/uploads/2012/11/4.-A-single-node-tree.png)](/wp-content/uploads/2012/11/4.-A-single-node-tree.png) 
+[![A single node tree](../images/4.-A-single-node-tree.png)](../images/4.-A-single-node-tree.png) 
 
 On some point we have a forest of “k” trees which are all a sub-trees of the minimum spanning tree. 
 
-[![Growing forest](/wp-content/uploads/2012/11/5.-A-forest-out-of-K-sub-trees.png)](/wp-content/uploads/2012/11/5.-A-forest-out-of-K-sub-trees.png) 
+[![Growing forest](../images/5.-A-forest-out-of-K-sub-trees.png)](../images/5.-A-forest-out-of-K-sub-trees.png) 
 
 Finally one step before building the final MST we have two trees and we connect them with the less weighted edge left that connects them.
 
 It’s important to note that during the process of building the tree we sort the edges in ascending order by their weight.
 
-[![Sorted edges](/wp-content/uploads/2012/11/6.-Sorted-Edges.png)](/wp-content/uploads/2012/11/6.-Sorted-Edges.png) 
+[![Sorted edges](../images/6.-Sorted-Edges.png)](../images/6.-Sorted-Edges.png) 
 
 Than we start getting edges and check whether their ends (the two vertices making the edge) belong to a different sub-trees.
 
-[![Check edges](/wp-content/uploads/2012/11/7.-Check-edges.png)](/wp-content/uploads/2012/11/7.-Check-edges.png) 
+[![Check edges](../images/7.-Check-edges.png)](../images/7.-Check-edges.png) 
 
 ## Pseudo Code
 

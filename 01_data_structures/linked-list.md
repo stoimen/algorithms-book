@@ -12,7 +12,7 @@ However understanding how to implement the basic operations of a linked list suc
 
 Unlike arrays where we don’t have pointers to the next and the previous item, the linked list is designed to support such pointers. In some implementations there is only one pointer pointing to the successor of the item. This kind of data structures are called singly linked lists. In this case the the last element doesn’t have a successor, so the pointer to its next element usualy is NULL. However the most implemented version of a linked list supports two pointers. These are the so called doubly linked lists.
 
-[![Arrays vs. linked list](/wp-content/uploads/2012/06/0.-Arrays-vs.-linked-list.png)](/wp-content/uploads/2012/06/0.-Arrays-vs.-linked-list.png)Arrays items are defined by their indices, while the linked list item contains a pointer to its predecessor and his successor!
+[![Arrays vs. linked list](../images/0.-Arrays-vs.-linked-list.png)](../images/0.-Arrays-vs.-linked-list.png)Arrays items are defined by their indices, while the linked list item contains a pointer to its predecessor and his successor!
 
 Let’s take a look at some examples. Here’s an array:
 
@@ -89,7 +89,7 @@ We can perform and define as much operations as we need. For instance we can cod
 
 Inserting in the front of a list seems much like inserting into a queue. In this case the new item becomes the head of the list and its successor is the previous head of the list.
 
-[![Inserting at the front of a Linked List](/wp-content/uploads/2012/06/1.-Insert-at-the-front-of-a-Linked-List.png)](/wp-content/uploads/2012/06/1.-Insert-at-the-front-of-a-Linked-List.png)Inserting at the front of the list
+[![Inserting at the front of a Linked List](../images/1.-Insert-at-the-front-of-a-Linked-List.png)](../images/1.-Insert-at-the-front-of-a-Linked-List.png)Inserting at the front of the list
 
 ```php
 class LList
@@ -140,7 +140,7 @@ echo $ll;
 
 Delete the head of the list is much like deleting an item from a queue. However we can implement also deleting a custom element that’s inside the list.
 
-[![Delete an item](/wp-content/uploads/2012/06/4.-Delete-an-item.png)](/wp-content/uploads/2012/06/4.-Delete-an-item.png)Deleting an item from the inside of the list!
+[![Delete an item](../images/4.-Delete-an-item.png)](../images/4.-Delete-an-item.png)Deleting an item from the inside of the list!
 
 ```php
 class LList
@@ -230,7 +230,7 @@ echo $ll;
 
 Inserting before and after needs a reference to an already existing list item. After that the new object is inserted into it right place, as shown on the images below.
 
-[![Insert after a given item of a Linked List](/wp-content/uploads/2012/06/2.-Insert-after-a-given-item-of-a-Linked-List.png)](/wp-content/uploads/2012/06/2.-Insert-after-a-given-item-of-a-Linked-List.png)Insert after splits the list after the pointed item and inserts the new object there!
+[![Insert after a given item of a Linked List](../images/2.-Insert-after-a-given-item-of-a-Linked-List.png)](../images/2.-Insert-after-a-given-item-of-a-Linked-List.png)Insert after splits the list after the pointed item and inserts the new object there!
 
 ```php
 class LList
@@ -306,13 +306,13 @@ echo $ll;
 
 Insert a new object before an item is the same as insert after, but instead of splitting the list after the given item, we split it before it.
 
-[![Insert before a given item of a Linked List](/wp-content/uploads/2012/06/3.-Insert-before-a-given-item-of-a-Linked-List.png)](/wp-content/uploads/2012/06/3.-Insert-before-a-given-item-of-a-Linked-List.png)Insert before and insert after are very similar operations!
+[![Insert before a given item of a Linked List](../images/3.-Insert-before-a-given-item-of-a-Linked-List.png)](../images/3.-Insert-before-a-given-item-of-a-Linked-List.png)Insert before and insert after are very similar operations!
 
 ## Search
 
 Searching into a list can be modified depending on the application needs. Here we just compare the searched object with a list item.
 
-[![Search for an item](/wp-content/uploads/2012/06/5.-Search-for-an-item.png)](/wp-content/uploads/2012/06/5.-Search-for-an-item.png)
+[![Search for an item](../images/5.-Search-for-an-item.png)](../images/5.-Search-for-an-item.png)
 
 ```php
 class LList
@@ -405,4 +405,4 @@ The operations here are only one sub-set of all possible operations you can impl
 
 It’s true that linked list are a very basic data structure. Someone may wonder why we should code and implement linked list since we can do the same (with almost every modern programming language/library) with arrays. The answer is that data structures as trees are difficult to implement with arrays, so it’s easy to code them using pointers. Thus linked lists is a ground level for understanding them. Indeed each linked list is a tree with only one branch as shown on the image below.
 
-[![Linked List & Trees](/wp-content/uploads/2012/06/6.-Linked-List-Trees.png)](/wp-content/uploads/2012/06/6.-Linked-List-Trees.png)Each linked list is a single branch tree!
+[![Linked List & Trees](../images/6.-Linked-List-Trees.png)](../images/6.-Linked-List-Trees.png)Each linked list is a single branch tree!

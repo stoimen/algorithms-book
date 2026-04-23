@@ -18,11 +18,11 @@ Let’s say we have an array of integers which is not sorted. Just because it co
 
 First for each value of the input array we put the value of “1” on the key-th place of the temporary array as explained on the following diagram.
 
-[![Radix sort first pass](/wp-content/uploads/2012/03/RadixSortBasicIdea.png)](/wp-content/uploads/2012/03/RadixSortBasicIdea.png)Radix sort first pass
+[![Radix sort first pass](../images/RadixSortBasicIdea.png)](../images/RadixSortBasicIdea.png)Radix sort first pass
 
 If there are repeating values in the input array we increment the corresponding value in the temporary array. After “initializing” the temporary array with one pass (with linear complexity) we can sort the input. 
 
-[![Radix sort second pass](/wp-content/uploads/2012/03/RadixSortBasicIdea2ndpass.png)](/wp-content/uploads/2012/03/RadixSortBasicIdea2ndpass.png)Radix sort second pass
+[![Radix sort second pass](../images/RadixSortBasicIdea2ndpass.png)](../images/RadixSortBasicIdea2ndpass.png)Radix sort second pass
 
 ## Implementation
 
@@ -106,7 +106,7 @@ Here the input is modified during the sorting process and it’s used as result.
 
 The complexity of radix sort is linear, which in terms of omega means O(n). That is a great benefit in performance compared to O(n.log(n)) or even worse with O(n2) as we can see on the following chart.
 
-[![Linear function compared to n.log(n) and n^2](/wp-content/uploads/2012/03/RadixSortComplexity.png)](/wp-content/uploads/2012/03/RadixSortComplexity.png)Linear function compared to n.log(n) and n^2
+[![Linear function compared to n.log(n) and n^2](../images/RadixSortComplexity.png)](../images/RadixSortComplexity.png)Linear function compared to n.log(n) and n^2
 
 ## Why using radix sort
 
@@ -114,7 +114,7 @@ The complexity of radix sort is linear, which in terms of omega means O(n). That
 
 Radix sort is very fast compared to other sorting algorithms as we saw on the diagram above. This algorithm is very useful in practice because in practice we often sort sets of integers.
 
-[![Pros of radix sort](/wp-content/uploads/2012/03/Prosofradixsort.png)](/wp-content/uploads/2012/03/Prosofradixsort.png) 
+[![Pros of radix sort](../images/Prosofradixsort.png)](../images/Prosofradixsort.png) 
 
 ## 2. It’s easy to understand and implement
 
@@ -126,7 +126,7 @@ Even a beginner can understand and implement radix sort, which is great. You nee
 
 If you’re not sure about the input better do not use radix sort. We may think that our input consists only of integers and we can go for radix sort, but what if in the future someone passes floats or strings to our routine.
 
-[![Cons of radix sort](/wp-content/uploads/2012/03/Consofradixsort.png)](/wp-content/uploads/2012/03/Consofradixsort.png) 
+[![Cons of radix sort](../images/Consofradixsort.png)](../images/Consofradixsort.png) 
 
 ## 2. Requires additional space
 

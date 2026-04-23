@@ -2,7 +2,7 @@
 
 ## Bubble Sort
 
-[![Unsorted Array](/wp-content/uploads/2010/07/unsorted.jpg)](/wp-content/uploads/2010/07/unsorted.jpg)
+[![Unsorted Array](../images/unsorted.jpg)](../images/unsorted.jpg)
 
 This is one of the most slowest algorithms for sorting, but it’s extremely well known because of its easy to implement nature. However as I wrote past Fridays there are lots of sorting algorithms which are really fast, like the [quicksort](/2010/06/18/friday-algorithms-iterative-quicksort/) or [mergesort](/2010/07/02/friday-algorithms-javascript-merge-sort/). In the case of bubble sort the nature of the algorithm is described in its name. The smaller element goes to the top (beginning) of the array as a bubble goes to the top of the water.
 
@@ -54,4 +54,4 @@ console.log(a);
 
 As a result you’ve a sorted array!
 
-[![Sorted Array](/wp-content/uploads/2010/07/sorted.jpg)](/wp-content/uploads/2010/07/sorted.jpg)
+[![Sorted Array](../images/sorted.jpg)](../images/sorted.jpg)

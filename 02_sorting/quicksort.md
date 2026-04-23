@@ -8,7 +8,7 @@ When it comes to sorting items by comparing them [merge sort](/2012/03/05/comput
 
 Back in 1960 [C. A. R. Hoare](http://en.wikipedia.org/wiki/Tony_Hoare) comes with a brilliant sorting algorithm. In general quicksort consists of some very simple steps. First we’ve to choose an element from the list (called a pivot) then we must put all the elements with value less than the pivot on the left side of the pivot and all the items with value greater than the pivot on its right side. After that we must repeat these steps for the left and the right sub-lists. That is quicksort! Simple and elegant! 
 
-[![Quicksort](/wp-content/uploads/2012/03/Quicksort.png)](/wp-content/uploads/2012/03/Quicksort.png) 
+[![Quicksort](../images/Quicksort.png)](../images/Quicksort.png) 
 
 It is a pure divide and conquer approach as merge sort, but while merge sort’s tricky part was merging the sorted sub-lists, in quicksort there are other things to consider. 
 
@@ -20,7 +20,7 @@ Of course the best pivot is the middle element from the list. Thus the list will
 
 After choosing a pivot the rest is simple. Put every item with a greater value on the right and every item with a lesser value on the left. Then we must sort the left and right sub-lists just as we did with the initial list. 
 
-[![Merging in Quicksort](/wp-content/uploads/2012/03/MerginginQuicksort.png)](/wp-content/uploads/2012/03/MerginginQuicksort.png)
+[![Merging in Quicksort](../images/MerginginQuicksort.png)](../images/MerginginQuicksort.png)
 
 It’s clear that with this algorithm naturally we’re going into a recursive solution. Typically every divide and conquer approach is easy to implement with recursion. But because recursion can be heavy, there is an iterative approach.
 
@@ -81,7 +81,7 @@ print_r(quicksort_iterative($list));
 
 The complexity of quicksort in the average case is O(n*log(n)) – same as Merge sort. The problem is that in the worst case it is O(n2) – same as bubble sort. Obviously the worst case is when we have an already sorted list, and we constantly take for a pivot the last element of the list. But we should consider that in practice we don’t quite use sorted lists that we have to sort again, right?
 
-[![Quicksort average and worst case scenarios](/wp-content/uploads/2012/03/Quicksort.Average.Worst_.png)](/wp-content/uploads/2012/03/Quicksort.Average.Worst_.png)
+[![Quicksort average and worst case scenarios](../images/Quicksort.Average.Worst_.png)](../images/Quicksort.Average.Worst_.png)
 
 ## Application
 

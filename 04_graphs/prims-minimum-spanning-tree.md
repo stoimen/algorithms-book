@@ -6,13 +6,13 @@ Along with the [Kruskal’s minimum spanning tree algorithm](/2012/11/12/compute
 
 As we already know the algorithm of Kruskal works in a pretty natural and logical way. Since we’re trying to build a MST, which is naturally build by the minimal edges of the graph (G), we sort them in a non-descending order and we start building the tree. 
 
-[![The algorithm of Kruskal](/wp-content/uploads/2012/11/1.-The-algorithm-of-Kruskal.png)](/wp-content/uploads/2012/11/1.-The-algorithm-of-Kruskal.png) 
+[![The algorithm of Kruskal](../images/1.-The-algorithm-of-Kruskal.png)](../images/1.-The-algorithm-of-Kruskal.png) 
 
 During the whole process of building the final minimum spanning tree Kruskal’s algorithm keeps a forest of trees. The number of trees in that forest decreases on each step and finally we get the minimum weight spanning tree. 
 
 A key point in the Kruskal’s approach is the way we get the “next” edge from G that should be added to one of the trees of the forest (or to connect two trees from the forest). The only thing we should be aware of is to choose an edge that’s connecting two vertices – u and v and these two shouldn’t be in the same tree. That’s all.
 
-[![The Kruskal's Tricky Part](/wp-content/uploads/2012/11/2.-The-Kruskals-Tricky-Part.png)](/wp-content/uploads/2012/11/2.-The-Kruskals-Tricky-Part.png) 
+[![The Kruskal's Tricky Part](../images/2.-The-Kruskals-Tricky-Part.png)](../images/2.-The-Kruskals-Tricky-Part.png) 
 
 An important feature of the Kruskal’s algorithm is that it builds the MST just by sorting the edges by their weight and doesn’t care about a particular starting vertex.
 
@@ -22,7 +22,7 @@ In the same time there’s another algorithm that builds a MST – the algorithm
 
 The idea behind the Prim’s algorithm is rather different from Kruskal’s approach. During the process of building the MST this algorithm keeps a single tree, which is finally sub-tree of the final minimum weight spanning tree.
 
-[![Prim's approach](/wp-content/uploads/2012/11/3.-Prims-approach.png)](/wp-content/uploads/2012/11/3.-Prims-approach.png) 
+[![Prim's approach](../images/3.-Prims-approach.png)](../images/3.-Prims-approach.png) 
 
 On each step we chose an edge which we add to the growing tree that finally forms the MST. 
 
@@ -34,7 +34,7 @@ Actually we are sure that the final tree is a MST because of another obvious fea
 
 This algorithm looks much like [Dijkstra’s shortest path in a graph](/2012/10/15/computer-algorithms-dijkstra-shortest-path-in-a-graph/), because we start from a vertex, we push all the edges starting from this node to a priority queue and we chose the lightest edge. Going to the next node connected by this edge we append to the queue all the edges that aren’t in the queue. 
 
-[![Prim's Priority Queue](/wp-content/uploads/2012/11/4.-Prims-Priority-Queue.png)](/wp-content/uploads/2012/11/4.-Prims-Priority-Queue.png) 
+[![Prim's Priority Queue](../images/4.-Prims-Priority-Queue.png)](../images/4.-Prims-Priority-Queue.png) 
 
 That way the queue grows and we get always the lightest edge – thus forming a priority queue. 
 

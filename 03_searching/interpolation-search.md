@@ -8,11 +8,11 @@ Why is that? Well, this algorithm tries to follow the way we search a name in a 
 
 So the interpolation search is based on some simple facts. The binary search divides the interval on two equal sub-lists, as shown on the image bellow.
 
-[![Binary search basic approach](/wp-content/uploads/2012/01/InterpolationSearchfig.1.png)](/wp-content/uploads/2012/01/InterpolationSearchfig.1.png)The binary search algorithm divides the list in two equal sub-lists!
+[![Binary search basic approach](../images/InterpolationSearchfig.1.png)](../images/InterpolationSearchfig.1.png)The binary search algorithm divides the list in two equal sub-lists!
 
 What will happen if we don’t use the constant ½, but another more accurate constant “C”, that can lead us closer to the searched item.
 
-[![Interpolation search](/wp-content/uploads/2012/01/InterpolationSearchfig.2.png)](/wp-content/uploads/2012/01/InterpolationSearchfig.2.png)The interpolation search algorithm tries to improve the binary search!
+[![Interpolation search](../images/InterpolationSearchfig.2.png)](../images/InterpolationSearchfig.2.png)The interpolation search algorithm tries to improve the binary search!
 
 The question is how to find this value? Well, we know bounds of the interval and looking closer to the image above we can define the following formula.
 
@@ -60,7 +60,7 @@ echo interpolation_search($list, $x);
 
 The complexity of this algorithm is log2(log2(n)) + 1. While I wont cover its proof, I’ll say that this is very slowly growing function as you can see on the following chart.
 
-[![log(n) compared to log(log(n))](/wp-content/uploads/2012/01/logntologlogn.png)](/wp-content/uploads/2012/01/logntologlogn.png)
+[![log(n) compared to log(log(n))](../images/logntologlogn.png)](../images/logntologlogn.png)
 
 Indeed when the values are equally dispersed into the interval this search algorithm can be extremely useful – way faster than the binary search. As you can see log2(log2(100 M)) ≈ 4.73 !!!
 

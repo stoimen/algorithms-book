@@ -6,13 +6,13 @@ Let’s assume we have a list of tasks to accomplish. Some of the tasks depend o
 
 Thus we can’t model this problem using linked lists or trees. The only rational solution is to model the problem using a graph. What kind of graph do we need? Well, we definitely need a directed graph, to desribe the relations, and this graph shouldn’t have cycles. So we need the so called directed acyclic graph (DAG).
 
-[![Topological Sort. Directed Graph.](/wp-content/uploads/2012/10/1.-TS-Directed-Graph.png)](/wp-content/uploads/2012/10/1.-TS-Directed-Graph.png)In order to sort a graph using topological sort we need this graph to be acyclic and directed!
+[![Topological Sort. Directed Graph.](../images/1.-TS-Directed-Graph.png)](../images/1.-TS-Directed-Graph.png)In order to sort a graph using topological sort we need this graph to be acyclic and directed!
 
 Why we don’t what a cycle in the graph? The answer of this question is simple and obvious. In case of cyclic graph, we wouldn’t be able to determine the priority of task execution, thus we won’t be able to sort the tasks properly.
 
 Now the solution we want is to sort the vertices of the graph in some order so for each edge (u, v) u will precede v. Then we’ll have a linear order of all tasks and by starting their execution we’ll know that everything will be OK.
 
-[![Topological Sort. Sort the vertices.](/wp-content/uploads/2012/10/2.-TS-Sort-the-vertices.png)](/wp-content/uploads/2012/10/2.-TS-Sort-the-vertices.png)The output of topological sort should be a list of vertices!
+[![Topological Sort. Sort the vertices.](../images/2.-TS-Sort-the-vertices.png)](../images/2.-TS-Sort-the-vertices.png)The output of topological sort should be a list of vertices!
 
 This kind of sort is also known as “topological” sort (or topsort) and it is one of the very basic graph algorithms.
 
@@ -20,7 +20,7 @@ This kind of sort is also known as “topological” sort (or topsort) and it is
 
 OK, so we have an acyclic directed graph, how do we proceed to get a linked list with all the vertices sorted? Since it’s an acyclic graph we know that there is at least one vertex without predecessor. Thus at first place, we can put all the vertices without predecessors into our linked list.
 
-[![Topological Sort. First Step.](/wp-content/uploads/2012/10/3.-TS-First-Step.png)](/wp-content/uploads/2012/10/3.-TS-First-Step.png)Initially we get only the vertices without a predecessor!
+[![Topological Sort. First Step.](../images/3.-TS-First-Step.png)](../images/3.-TS-First-Step.png)Initially we get only the vertices without a predecessor!
 
 This approach answers the question – is there a possibility to have more than one valid topological sort of a graph? Indeed, the only thing we’d like to do is to put all the vertices in the correct order, but since there might be vertices with no predecessors any combination of them will be a valid topological sort for a graph.
 
@@ -42,7 +42,7 @@ Now we can generalize the algorithm in some basic steps.
 
 	 3.2.2. If m has no predecessors – push it to L;
 
-[![Topological Sort. Second Step.](/wp-content/uploads/2012/10/4.-TS-Second-Step.png)](/wp-content/uploads/2012/10/4.-TS-Second-Step.png)The image above explains step 3.2. from the algorithm!
+[![Topological Sort. Second Step.](../images/4.-TS-Second-Step.png)](../images/4.-TS-Second-Step.png)The image above explains step 3.2. from the algorithm!
 
 ## Code
 

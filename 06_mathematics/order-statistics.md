@@ -6,13 +6,13 @@ We know that [finding the minimum in a list of integers](/2012/05/21/computer-al
 
 First of all there are some very basic and intuitive approaches. Since finding the minimum is so easy, can we just find the minimum, than exclude it from the list and then search the minimum again until we find the i-th smallest element.
 
-[![Finding the Minimums](/wp-content/uploads/2012/05/1.-Finding-the-Minimums.png)](/wp-content/uploads/2012/05/1.-Finding-the-Minimums.png) 
+[![Finding the Minimums](../images/1.-Finding-the-Minimums.png)](../images/1.-Finding-the-Minimums.png) 
 
 That is a pure brute-force-like algorithm and it is extremely slow. In this case if we’re looking for the 99-th smallest element into an array of 100 items it will be quite inefficient. In other words this isn’t the best approach.
 
 Another fairly intuitive approach is to sort the list in first place and then search the i-th element. 
 
-[![Sort and Seach](/wp-content/uploads/2012/05/2.-Sort-and-Seach.png)](/wp-content/uploads/2012/05/2.-Sort-and-Seach.png)First we can sort the list and then search for the i-th element!
+[![Sort and Seach](../images/2.-Sort-and-Seach.png)](../images/2.-Sort-and-Seach.png)First we can sort the list and then search for the i-th element!
 
 This is better than the our first attempt because we’ll need the time to sort the array and then search (in linear time) the i-th element.
 
@@ -26,13 +26,13 @@ If we’re looking for the i-th element and we decided that the list must be sor
 
 In case the list is sorted it’s easy to find which is the i-th element. However if the i-th element is in its place, the only thing we need to know is that the items on the left side of the i-th element are smaller and the items on the right side are greater. We don’t need the left and the right side ordered.
 
-[![Don't need ordered sub-lists](/wp-content/uploads/2012/05/3.-Dont-need-ordered-sub-lists.png)](/wp-content/uploads/2012/05/3.-Dont-need-ordered-sub-lists.png) 
+[![Don't need ordered sub-lists](../images/3.-Dont-need-ordered-sub-lists.png)](../images/3.-Dont-need-ordered-sub-lists.png) 
 
 In the other hand this approach looks very much like quicksort. There during the sorting process we put the items smaller than the “pivot” on its left and the items greater than the pivot on its right. After that partitioning we executed quicksort on the left and on the right sub-lists.
 
 Here the approach is similar with very small changes. First we choose a pivot. Then we make two partitions of the list – one left sub-list with all the elements with smaller values than the pivot and one right sub-list with all the elements with a greater value than the pivot. 
 
-[![Choose a pivot and partition](/wp-content/uploads/2012/05/4.-Choose-a-pivot-and-partition.png)](/wp-content/uploads/2012/05/4.-Choose-a-pivot-and-partition.png)Just like quicksort we chose a pivot and then we partition the list into two sub-lists!
+[![Choose a pivot and partition](../images/4.-Choose-a-pivot-and-partition.png)](../images/4.-Choose-a-pivot-and-partition.png)Just like quicksort we chose a pivot and then we partition the list into two sub-lists!
 
 Now we check the length of the left sub-list. If it is greater than i we continue recursively with the left sub-list and again we’re searching for the i-th element.
 

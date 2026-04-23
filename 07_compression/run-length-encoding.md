@@ -14,7 +14,7 @@ It would be great if we could just compress data with some tool. Unfortunately t
 
 Here I’ll cover one very simple lossless data compression algorithm called “run-length encoding” that can be very useful in some cases.
 
-[![Run-length Encoding](/wp-content/uploads/2012/01/Run-lengthEncoding1.png)](/wp-content/uploads/2012/01/Run-lengthEncoding1.png) 
+[![Run-length Encoding](../images/Run-lengthEncoding1.png)](../images/Run-lengthEncoding1.png) 
 
 ## Overview
 
@@ -204,10 +204,10 @@ This is only one example of how data compression can be useful in our daily work
 
 Well, it’s true that the client has to decompress the data, which can also be slow. Now in the first case we have only the time to transfer, as on the diagram bellow.
 
-[![Data Transfer Without Compression](/wp-content/uploads/2012/01/DataTransferWithoutCompression.png)](/wp-content/uploads/2012/01/DataTransferWithoutCompression.png)Time to transfer data without compression!
+[![Data Transfer Without Compression](../images/DataTransferWithoutCompression.png)](../images/DataTransferWithoutCompression.png)Time to transfer data without compression!
 
 In the second case, we should sum the time for compression, transfer and decompression.
 
-[![Data Transfer with Compression](/wp-content/uploads/2012/01/DataTransferwithCompression.png)](/wp-content/uploads/2012/01/DataTransferwithCompression.png)Time to send data with compression!
+[![Data Transfer with Compression](../images/DataTransferwithCompression.png)](../images/DataTransferwithCompression.png)Time to send data with compression!
 
 All this is important, but in general data compression can be handy in many cases in our daily work.

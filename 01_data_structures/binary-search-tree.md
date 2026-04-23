@@ -6,7 +6,7 @@ Constructing a [linked list](/2012/06/14/computer-algorithms-linked-list-data-st
 
 Indeed searching in a linked list has a linear complexity and in the worst case we must go through the entire list in order to find the desired element. The worst case is when the item doesn’t belong to the list and we must check every single item of the list even the last one without success. This approach seems much like the [sequential search](/2011/11/24/computer-algorithms-sequential-search/) over arrays. Of course this is bad when we talk about large data sets. 
 
-[![Search over Linked Lists and Arrays](/wp-content/uploads/2012/06/1.-Search-over-Linked-Lists-and-Arrays.png)](/wp-content/uploads/2012/06/1.-Search-over-Linked-Lists-and-Arrays.png)Sequential search over arrays seems much like searching in linked lists and it is a basically ineffective opration!
+[![Search over Linked Lists and Arrays](../images/1.-Search-over-Linked-Lists-and-Arrays.png)](../images/1.-Search-over-Linked-Lists-and-Arrays.png)Sequential search over arrays seems much like searching in linked lists and it is a basically ineffective opration!
 
 In terms of arrays, we could perform binary search and go directly in the middle of the array, then jump back or forward. That is because we can access array items directly using their index. However as we saw the linked lists unlike arrays can’t benefit of a direct access and we must go item by item.
 
@@ -14,27 +14,27 @@ Because of this natural problem of linked lists searching is slow and obviously 
 
 The tree is a data structure where each item, except of keeping some data, keeps a reference (pointer) to its children and its parent.
 
-[![A tree](/wp-content/uploads/2012/06/2.-A-tree.png)](/wp-content/uploads/2012/06/2.-A-tree.png)A tree data structure. Each item points to its parent and its children. However the root’s parent it’s NIL.
+[![A tree](../images/2.-A-tree.png)](../images/2.-A-tree.png)A tree data structure. Each item points to its parent and its children. However the root’s parent it’s NIL.
 
 Of course if the item doesn’t have children, they are NIL, then this is considered a leaf in the tree terminology. In the other hand if the item doesn’t have parent item it is considered the root.
 
-[![Root and Leafs](/wp-content/uploads/2012/06/3.-Root-and-Leafs.png)](/wp-content/uploads/2012/06/3.-Root-and-Leafs.png)Root and Leafs
+[![Root and Leafs](../images/3.-Root-and-Leafs.png)](../images/3.-Root-and-Leafs.png)Root and Leafs
 
 If there is no item in the tree the tree is considered empty. 
 
 In these terms only the root has no parent, and each item can have as many children as possible. Here are some trees in form of a diagrams.
 
-[![Trees](/wp-content/uploads/2012/06/4.-Trees.png)](/wp-content/uploads/2012/06/4.-Trees.png)Possible trees
+[![Trees](../images/4.-Trees.png)](../images/4.-Trees.png)Possible trees
 
 If we’re looking at the root of the tree we can assume there are two sub-trees – one left and one right. However if we isolate only one of these sub-trees we can again think of it as a tree and assume that it has one left and one right sub-trees and go recursively with this definition.
 
-[![Sub-trees](/wp-content/uploads/2012/06/5.-Sub-trees.png)](/wp-content/uploads/2012/06/5.-Sub-trees.png)Left and right sub-trees
+[![Sub-trees](../images/5.-Sub-trees.png)](../images/5.-Sub-trees.png)Left and right sub-trees
 
 ## Overview
 
 A binary tree is a tree where each item can have at most two children. 
 
-[![Binary Tree](/wp-content/uploads/2012/06/6.-Binary-Tree.png)](/wp-content/uploads/2012/06/6.-Binary-Tree.png)In the binary tree each node has at most two sub-trees – left and right!
+[![Binary Tree](../images/6.-Binary-Tree.png)](../images/6.-Binary-Tree.png)In the binary tree each node has at most two sub-trees – left and right!
 
 Binary trees are especially important because they can contain ordered data in a specific manner. Building a binary tree isn’t difficult at all and it’s very similar to building a linked list.
 
@@ -44,11 +44,11 @@ However a binary tree isn’t more successful in searching than any other tree o
 
 The binary search tree is a specific kind of binary tree, where the each item keeps greater elements on the right, while the smaller items are on the left. 
 
-[![Binary search tree](/wp-content/uploads/2012/06/7.-Binary-search-tree.png)](/wp-content/uploads/2012/06/7.-Binary-search-tree.png)Binary search tree – BST
+[![Binary search tree](../images/7.-Binary-search-tree.png)](../images/7.-Binary-search-tree.png)Binary search tree – BST
 
 Constructing a binary search tree is easy, because we can go for inserting each item only by comparing it with the root and decide where to go (left or right) based on its value. 
 
-[![Insert in BST](/wp-content/uploads/2012/06/8.-Insert-in-BST.png)](/wp-content/uploads/2012/06/8.-Insert-in-BST.png)Inserting in a binary search tree is fairly easy
+[![Insert in BST](../images/8.-Insert-in-BST.png)](../images/8.-Insert-in-BST.png)Inserting in a binary search tree is fairly easy
 
 ## Implementation
 
@@ -146,11 +146,11 @@ echo $t->search($e);
 
 Searching in binary search trees is supposed to be faster than searching into linked list. However the searching process in a BST can be very fast, but also can be as slow as on linked list. That is because depending on the input of items they can be placed only on the one side of the root.
 
-[![Tree or a Linked list](/wp-content/uploads/2012/06/9.-Tree-or-a-Linked-list.png)](/wp-content/uploads/2012/06/9.-Tree-or-a-Linked-list.png)By inserting only greater items there are only right sub-trees – the tree isn’t different from a linked list and the searching is slow!
+[![Tree or a Linked list](../images/9.-Tree-or-a-Linked-list.png)](../images/9.-Tree-or-a-Linked-list.png)By inserting only greater items there are only right sub-trees – the tree isn’t different from a linked list and the searching is slow!
 
 That makes the worst-case searching as slow as on linked list which is linear O(n). However if the tree is somehow balanced we can search very quickly with O(log(n)) time.
 
-[![BST Chart](/wp-content/uploads/2012/06/BST-Chart.png)](/wp-content/uploads/2012/06/BST-Chart.png)
+[![BST Chart](../images/BST-Chart.png)](../images/BST-Chart.png)
 
 ## Further Optimization
 
@@ -158,7 +158,7 @@ We now see how ineffective binary search trees can be, so the only thing we must
 
 A balanced binary search tree, or only balanced tree, is a data structure where the height of left and the right sub-trees can vary by one level at most. 
 
-[![Balanced or not](/wp-content/uploads/2012/06/10.-Balanced-or-not.png)](/wp-content/uploads/2012/06/10.-Balanced-or-not.png)Searching in a balanced tree is significantly faster than in some binary search trees!
+[![Balanced or not](../images/10.-Balanced-or-not.png)](../images/10.-Balanced-or-not.png)Searching in a balanced tree is significantly faster than in some binary search trees!
 
 ## Application
 

@@ -6,7 +6,7 @@ Do you know what day of the week was the day you were born? Monday or maybe Satu
 
 We know that 2012 started at Sunday. After we know that it’s easy to determine what day is the 2nd of January. It should be Monday. But things get a little more complex if we try to guess some date distant from January the 1st. Indeed 1st of Jan was on Sunday, but what day is 9th of May the same year. This is far more difficult to say. Of course we can go with a brute force approach and count from 1/Jan till 9/May, but that is quite slow and error prone.
 
-[![Following Days](/wp-content/uploads/2012/04/FollowingDays.png)](/wp-content/uploads/2012/04/FollowingDays.png)If 1st of January is Sunday the most logical thing to happen is 2nd of January to be Monday
+[![Following Days](../images/FollowingDays.png)](../images/FollowingDays.png)If 1st of January is Sunday the most logical thing to happen is 2nd of January to be Monday
 
 So what we’ll do if we have to code a program that answers this question. The most easier way is to use a library. Almost every major library has built-in functions that can answer what day is on a given date. Such are date() in PHP or getDate() in JavaScript. But the question remains. How these library functions know the answer and how can we code such library function if our library doesn’t support such functionality?
 
@@ -22,7 +22,7 @@ First thing to know is that each week has exactly 7 days. We know also that a co
 
 Because 365 mod 7 = 1 in a common year each year begins exactly on the next day of the preceding year. Thus if 2011 started on Saturday, 2012 starts on Sunday. And yet again that is because 2011 is not a leap year.
 
-[![Some Statistics](/wp-content/uploads/2012/04/SomeStatistics.png)](/wp-content/uploads/2012/04/SomeStatistics.png)A week always has 7 days, while a year has different number of days depending on the fact whether it's a leap or not!
+[![Some Statistics](../images/SomeStatistics.png)](../images/SomeStatistics.png)A week always has 7 days, while a year has different number of days depending on the fact whether it's a leap or not!
 
 What else do we know? Because a week has exactly seven days only February (with its 28 days in a common year) is divisible by 7 (28 mod 7 = 0) and has exactly four weeks in it. Thus in a common year February and March start on a same day. Unfortunately that is not true about the other months.
 
@@ -30,23 +30,23 @@ All these things we know about the calendar are great, so we can make some concl
 
 Let’s take a look on some examples. For instance September has 30 days, as November, while October, which is in between them has 31 days. Thus 30+30+31 makes 91. Fortunately 91 mod 7 = 0. So for each year September and December start on the same day (as they are after February they don’t depend on leap years). The same thing occurs to April and July and the good news is that in leap years even January starts on the same day as April and July.
 
-[![Periods of Days Divisible by 7](/wp-content/uploads/2012/04/PeriodsofDaysDivisibleby7.png)](/wp-content/uploads/2012/04/PeriodsofDaysDivisibleby7.png)Not only the number of days in February is divisible by 7. The sum of days of April, May and June is also divisible by 7!
+[![Periods of Days Divisible by 7](../images/PeriodsofDaysDivisibleby7.png)](../images/PeriodsofDaysDivisibleby7.png)Not only the number of days in February is divisible by 7. The sum of days of April, May and June is also divisible by 7!
 
 Now we know that there are some relations between months. Thus if we know somehow that 13th of April is Monday, we’ll be sure that 13th of July is also Monday. Let’s see now a summary of these observations.
 
-[![Corresponding Months in a Common Year](/wp-content/uploads/2012/04/CorrespondingMonthsinaCommonYear.png)](/wp-content/uploads/2012/04/CorrespondingMonthsinaCommonYear.png)In a common year some months correspond!
+[![Corresponding Months in a Common Year](../images/CorrespondingMonthsinaCommonYear.png)](../images/CorrespondingMonthsinaCommonYear.png)In a common year some months correspond!
 
 We can also refer the following diagram.
 
-[![Table of Corresponding Months in a Common Year](/wp-content/uploads/2012/04/TableofCorrespondingMonthsinaCommonYear.png)](/wp-content/uploads/2012/04/TableofCorrespondingMonthsinaCommonYear.png)It's clearer to see the corresponding months in a table view!
+[![Table of Corresponding Months in a Common Year](../images/TableofCorrespondingMonthsinaCommonYear.png)](../images/TableofCorrespondingMonthsinaCommonYear.png)It's clearer to see the corresponding months in a table view!
 
 For leap years there are other corresponding months. Let’s take a look at the following image.
 
-[![Corresponding Months in a Leap Year](/wp-content/uploads/2012/04/CorrespondingMonthsinaLeapYear.png)](/wp-content/uploads/2012/04/CorrespondingMonthsinaLeapYear.png)Corresponding months in a leap year differs from corresponding months in a common year!
+[![Corresponding Months in a Leap Year](../images/CorrespondingMonthsinaLeapYear.png)](../images/CorrespondingMonthsinaLeapYear.png)Corresponding months in a leap year differs from corresponding months in a common year!
 
 Another way to get the same information is the following table.
 
-[![Table of Corresponding Months in a Leap Year](/wp-content/uploads/2012/04/TableofCorrespondingMonthsinaLeapYear.png)](/wp-content/uploads/2012/04/TableofCorrespondingMonthsinaLeapYear.png)Table view is easier to remember!
+[![Table of Corresponding Months in a Leap Year](../images/TableofCorrespondingMonthsinaLeapYear.png)](../images/TableofCorrespondingMonthsinaLeapYear.png)Table view is easier to remember!
 
 We know also that leap years happen to occur once per four years. However if there is a common year like the year 2001, which will be the next year that is common and starts and corresponds exactly on 2001? Because of leap years we can have a year starting on one of the seven days of the week and to be either leap or common. This means just 14 combinations.
 

@@ -79,18 +79,18 @@ function relative_encoding($input)
  
 	$output[] = $base;
  
-	for ($i = 1; $i [![San Francisco map with full lat and lon markers](/wp-content/uploads/2012/01/FullLatLononSanFrancisco.png)](/wp-content/uploads/2012/01/FullLatLononSanFrancisco.png)Map markers can be relative to the (0, 0) point on Earth, which can be sometimes useless.
+	for ($i = 1; $i [![San Francisco map with full lat and lon markers](../images/FullLatLononSanFrancisco.png)](../images/FullLatLononSanFrancisco.png)Map markers can be relative to the (0, 0) point on Earth, which can be sometimes useless.
 
 Far more useful may be to encode those markers, relative to the center of the city, thus we can save some space.
 
-[![San Francisco map with relative encoded markers](/wp-content/uploads/2012/01/SanFranciscoMap.png)](/wp-content/uploads/2012/01/SanFranciscoMap.png)Relative encoding can be useful for map markers on large zoom level!
+[![San Francisco map with relative encoded markers](../images/SanFranciscoMap.png)](../images/SanFranciscoMap.png)Relative encoding can be useful for map markers on large zoom level!
 
 However this type of compression can be tricky, for example when dragging the map and updating the marker array. In the other hand we must group markers if we have to load more than one city. That’s why we must be careful when implementing it. But in the other hand it can be very useful – for instance on initial load of the map we can reduce data and speed up the load time. 
 
 The thing is that with relative encoding we can save only changes to base value (data) – something like version control systems and thus reducing data transfer and load. Here’s a graphical example. In the first case on the diagram bellow we can see that each item is stored on its own. It doesn’t depend on the adjacent items and it can be completely independent of them.
 
-[![Non-relative encoding](/wp-content/uploads/2012/01/chart_11.png)](/wp-content/uploads/2012/01/chart_11.png) 
+[![Non-relative encoding](../images/chart_11.png)](../images/chart_11.png) 
 
 However we can keep full info only for the first item and any other item will be relative to it, like on the diagram bellow.
 
-[![Relative encoding](/wp-content/uploads/2012/01/chart_21.png)](/wp-content/uploads/2012/01/chart_21.png)
+[![Relative encoding](../images/chart_21.png)](../images/chart_21.png)

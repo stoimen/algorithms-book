@@ -2,7 +2,7 @@
 
 ## Algorithms and Data Structures
 
-[![stack](/wp-content/uploads/2010/06/stack.jpg)](/wp-content/uploads/2010/06/stack.jpg)
+[![stack](../images/stack.jpg)](../images/stack.jpg)
 
 Instead of writing about “pure” algorithms this time I’ve decided to write about data structures and to start with a stack implementation in JavaScript. However algorithms and data structures live together since the very beginning of the computer sciences. Another reason to write about data structures is that many algorithms need a specific data structure to be implemented. Most of the search algorithms are data structure dependent. You know that searching into a tree is different from searching into a linked list.
 
@@ -14,7 +14,7 @@ You can thing of the “computer science” stack as a stack of sheets of paper,
 
 Here’s a little diagram:
 
-[![Stack](/wp-content/uploads/2010/07/stack.png)](/wp-content/uploads/2010/07/stack.png)
+[![Stack](../images/stack.png)](../images/stack.png)
 
 ## Source Code
 

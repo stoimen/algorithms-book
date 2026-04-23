@@ -8,7 +8,7 @@ That’s why from the early years of computer science both sorting and searching
 
 ## C. A. R. Hoare
 
-![Sir C. A. R. Hoare](/wp-content/uploads/2010/06/Hoare.jpg)
+![Sir C. A. R. Hoare](../images/Hoare.jpg)
 
 Sir Charles Antony Richard Hoare is born on the 11 of January 1934 in Ceylon, now Sri Lanka, and after finishing his studies in the University of Oxford and being in the Royal Navy for two years, he went to … Moscow where at the age of 26 (in 1960) he developed the famous quicksort algorithm. That’s not everything! Beside the sorting algorithm he’s well recognized with the Hoare logic and the invention of the formal language CSP (Communicating Sequential Processes).
 

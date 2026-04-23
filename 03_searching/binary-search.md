@@ -4,11 +4,11 @@
 
 The binary search is perhaps the most famous and best suitable search algorithm for sorted arrays. Indeed when the array is sorted it is useless to check every single item against the desired value. Of course a better approach is to jump straight to the middle item of the array and if the item’s value is greater than the desired one, we can jump back again to the middle of the interval. Thus the new interval is half the size of the initial one.
 
-[![Binary search basic implementation](/wp-content/uploads/2011/12/BinarySearchfig.1.png)](/wp-content/uploads/2011/12/BinarySearchfig.1.png)Basic implementation of binary search
+[![Binary search basic implementation](../images/BinarySearchfig.1.png)](../images/BinarySearchfig.1.png)Basic implementation of binary search
 
 If the searched value is greater than the one placed at the middle of the sorted array, we can jump forward. Again on each step the considered list is getting half as long as the list on the previous step, as shown on the image bellow.
 
-[![Binary search - basic implementation](/wp-content/uploads/2011/12/BinarySearchfig.2.png)](/wp-content/uploads/2011/12/BinarySearchfig.2.png)Binary search - basic implementation
+[![Binary search - basic implementation](../images/BinarySearchfig.2.png)](../images/BinarySearchfig.2.png)Binary search - basic implementation
 
 ## Implementation
 
@@ -45,7 +45,7 @@ Every developer has heard of Fibonacci and his sequence. The Fibonacci search al
 
 It is clear that the ratio of any two consecutive numbers in the Fibonacci sequence is practically forming the golden ratio. This can lead us to another variation of Fibonacci and binary search – the golden section search. The only different thing is that you’ve to divide the length of the list in two parts exactly by the golden ratio.
 
-[![Golden Section Search](/wp-content/uploads/2011/12/GoldenRatioSearch.png)](/wp-content/uploads/2011/12/GoldenRatioSearch.png)The golden section search doesn't divide the array on two equal sub-lists!
+[![Golden Section Search](../images/GoldenRatioSearch.png)](../images/GoldenRatioSearch.png)The golden section search doesn't divide the array on two equal sub-lists!
 
 The complexity both of the Fibonacci and the golden section search algorithm is identical with the complexity of the binary search. However these two algorithms are rarely used in practice. Also it is more difficult to implement these two algorithms than the binary search and their advantage depends on specifically dispersed data.
 
@@ -53,7 +53,7 @@ The complexity both of the Fibonacci and the golden section search algorithm is 
 
 The complexity of the binary search algorithm is intuitively clear – O(log(n)), which makes it far more effective than the sequential search.
 
-[![log(n)](/wp-content/uploads/2011/12/chart_1.png)](/wp-content/uploads/2011/12/chart_1.png)f(n) = log(n) compared to f(n) = n
+[![log(n)](../images/chart_1_1.png)](../images/chart_1_1.png)f(n) = log(n) compared to f(n) = n
 
 ## Application
 

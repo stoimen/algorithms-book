@@ -4,7 +4,7 @@
 
 Along with [breadth-first search](/2012/09/10/computer-algorithms-graph-breadth-first-search/), depth-first search is one of the two main methods to walk through a graph. This approach though is different. Breadth-first search (BFS) looks pretty much like starting from a vertex and expanding the searching process level by level. This means that first we get some information of all the successors of the given node and then we go further with the next level. In other words BFS is like a wave. Depth-first search is based on a different approach, which can be very useful in some specific algorithms.
 
-[![DFS vs. BFS](/wp-content/uploads/2012/09/1.-DFS-vs.-BFS.png)](/wp-content/uploads/2012/09/1.-DFS-vs.-BFS.png)Depth-first and breadth-first search are the two main ways to explore a graph!
+[![DFS vs. BFS](../images/1.-DFS-vs.-BFS.png)](../images/1.-DFS-vs.-BFS.png)Depth-first and breadth-first search are the two main ways to explore a graph!
 
 Both methods can be useful in solving different tasks.
 
@@ -12,7 +12,7 @@ Both methods can be useful in solving different tasks.
 
 Depth-first search is an algorithm that by given starting and target node, finds a path between them. We can use DFS also to walk through all the vertices of a graph, in case the graph is connected.
 
-[![DFS explained](/wp-content/uploads/2012/09/2.-DFS-explained.png)](/wp-content/uploads/2012/09/2.-DFS-explained.png)The algorithm frist goes in depth and then backtracks to all unvisited successors!
+[![DFS explained](../images/2.-DFS-explained.png)](../images/2.-DFS-explained.png)The algorithm frist goes in depth and then backtracks to all unvisited successors!
 
 The whole idea of this algorithm is to go as far as possible from the given starting node searching for the target. In case we get to a node that has no successors, we get back (typically this is done recursively) and we continue with the last vertex that isn’t visited yet.
 

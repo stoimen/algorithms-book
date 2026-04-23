@@ -14,7 +14,7 @@ Of course you don’t need to prove this every time you use this algorithm. Inst
 
 Let’s cosider the following list: (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610). Its length is 16. Jump search will find the value of 55 with the following steps.
 
-[![Jump search basic implementation](/wp-content/uploads/2011/12/jump-search-fig-1.png)](/wp-content/uploads/2011/12/jump-search-fig-1.png)Jump search skips some of the items of the list in order to improve performance!
+[![Jump search basic implementation](../images/jump-search-fig-1.png)](../images/jump-search-fig-1.png)Jump search skips some of the items of the list in order to improve performance!
 
 ## Implementation
 
@@ -28,7 +28,7 @@ for ($i = 0; $i = $len) {
 		}
 	}
  
-	while ($list[$prev] [![Basic jump search can be slightly optimized!](/wp-content/uploads/2011/12/jump-search-fig-2.png)](/wp-content/uploads/2011/12/jump-search-fig-2.png)The basic implementation of jump search can be slightly optimized!
+	while ($list[$prev] [![Basic jump search can be slightly optimized!](../images/jump-search-fig-2.png)](../images/jump-search-fig-2.png)The basic implementation of jump search can be slightly optimized!
 
 ## Complexity
 
@@ -42,6 +42,6 @@ Perhaps every one of us has performed some sort of a primitive jump search in hi
 
 This clumsy example can give us the answer of where jump search can be better than binary search. The advantage of jump search is that you need to jump back only once (in case of the basic implementation).
 
-[![Jump search is very useful when jumping back is significantly slower than jumping forward!](/wp-content/uploads/2011/12/jump-search-fig-3.png)](/wp-content/uploads/2011/12/jump-search-fig-3.png)Jump search is very useful when jumping back is significantly slower than jumping forward!
+[![Jump search is very useful when jumping back is significantly slower than jumping forward!](../images/jump-search-fig-3.png)](../images/jump-search-fig-3.png)Jump search is very useful when jumping back is significantly slower than jumping forward!
 
 If jumping back takes you significantly more time than jumping forward then you should use this algorithm.

@@ -6,7 +6,7 @@ As we saw in the previous post, [the algorithm of Dijkstra](/2012/10/15/computer
 
 We know that the algorithm works perfectly when it comes to positive edges, and that is absolutely normal because we try to optimize the inequality of the triangle.
 
-[![Dijkstra](/wp-content/uploads/2012/10/1.-Dijkstras-Approach.png)](/wp-content/uploads/2012/10/1.-Dijkstras-Approach.png)Since all the edges are positive we get the closest one!
+[![Dijkstra](../images/1.-Dijkstras-Approach.png)](../images/1.-Dijkstras-Approach.png)Since all the edges are positive we get the closest one!
 
 Since Dijkstra’s algorithm make use of a priority queue normally we get first the shortest adjacent edge to the starting point. In our very basic example we’ll get first the edge with the length of 3 -> (S, A).
 
@@ -16,7 +16,7 @@ However when it comes to negative edges we can’t use any more priority queues,
 
 The solution was published by [Richard E. Bellman](http://en.wikipedia.org/wiki/Richard_Bellman) and [Lester Ford, Jr.](http://en.wikipedia.org/wiki/L._R._Ford,_Jr.) in 1958 in their publication “On a Routing Problem” and it is quite simple to explain and understand. Since we can prioritize the edges by its lengths the only thing we should do is to calculate all the paths. And to be sure that our algorithm will find all the paths correctly we repeat that N-1 times, where N is the number of vertices (|V| = N)!
 
-[![Bellman-Ford Approach](/wp-content/uploads/2012/10/2.-Bellman-Ford-Approach.png)](/wp-content/uploads/2012/10/2.-Bellman-Ford-Approach.png)The algorithm of Bellman-Ford doesn’t use priority queues! Indeed they are useless since the closest node in the queue can have shorter path passing through another node!
+[![Bellman-Ford Approach](../images/2.-Bellman-Ford-Approach.png)](../images/2.-Bellman-Ford-Approach.png)The algorithm of Bellman-Ford doesn’t use priority queues! Indeed they are useless since the closest node in the queue can have shorter path passing through another node!
 
 In this very basic image we can see how Bellman-Ford solves the problem. First we get the distances from S to A and B, which are respectively 3 and 4, but there is a shorter path to A, which passes through B and it is (S, B) + (B, A) = 4 – 2 = 2.
 
@@ -70,7 +70,7 @@ The complexity is clearly O(n3) which follows directly from the code above.
 
 Actually this algorithm is very useful and it not only works with negative weights, but also can help us find negative cycles in the graph.
 
-[![Negative Cycles](/wp-content/uploads/2012/10/3.-Negative-Cycles.png)](/wp-content/uploads/2012/10/3.-Negative-Cycles.png)A negative cycle can be found with Bellman-Ford’s algorithm!
+[![Negative Cycles](../images/3.-Negative-Cycles.png)](../images/3.-Negative-Cycles.png)A negative cycle can be found with Bellman-Ford’s algorithm!
 
 This is done with the simple check after the main loop.
 

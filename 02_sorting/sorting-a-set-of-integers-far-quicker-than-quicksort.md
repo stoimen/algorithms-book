@@ -12,15 +12,15 @@ The question is – if there are so many constraints, why should I use that algo
 
 First we have an unsorted array, but we know the minimum and maximum of the set.
 
-[![an unsorted array of integers](/wp-content/uploads/2010/06/unsorted.png)](/wp-content/uploads/2010/06/unsorted.png)
+[![an unsorted array of integers](../images/unsorted.png)](../images/unsorted.png)
 
 On the first pass initialize an empty array with as many elements, as they are between the first and the last element of the set – for a set between 1 and 1000 – that will be an array with 1000 elements – each of which will be a zero in the beginning.
 
-[![temporary array with 0 on every element](/wp-content/uploads/2010/06/temp-array.png)](/wp-content/uploads/2010/06/temp-array.png)
+[![temporary array with 0 on every element](../images/temp-array.png)](../images/temp-array.png)
 
 Than loop trough the set and for every element in the set – you should put a 1 on it’s place
 
-[![sort a set - first pass](/wp-content/uploads/2010/06/array-first-pass.png)](/wp-content/uploads/2010/06/array-first-pass.png)
+[![sort a set - first pass](../images/array-first-pass.png)](../images/array-first-pass.png)
 
 Now we have an array of 0 and 1.
 
@@ -28,7 +28,7 @@ Now we have an array of 0 and 1.
 
 After the first pass, you’d guess what you’ve to do – loop trough the second array and print the keys of the elements different from 0 – those that are 1.
 
-[![a sorted set of integers](/wp-content/uploads/2010/06/sorted.png)](/wp-content/uploads/2010/06/sorted.png)
+[![a sorted set of integers](../images/sorted.png)](../images/sorted.png)
 
 Now the array is sorted!
 

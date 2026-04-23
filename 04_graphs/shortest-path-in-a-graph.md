@@ -12,33 +12,33 @@ OK, so we need a shortest path algorithm, but before we proceed with the exact a
 
 First we need a definition of the terms distance and path between two nodes. A path is considered to be the sequence of vertices (or edges if you wish) between two vertices i and j. Of course we assume that there might be no path between any to vertices in the graph! Also we assume that this definition relates both for directed and undirected graphs. After we have the definition of a path we can proceed by defining a “distance”, which is said to be the number of edges in the path between i and j.
 
-[![Path and Distance](/wp-content/uploads/2012/10/1.-Path-and-Distance.png)](/wp-content/uploads/2012/10/1.-Path-and-Distance.png)First we need to define what’s a path and a distance between two vertices in order to continue searching for the shortest path!
+[![Path and Distance](../images/1.-Path-and-Distance.png)](../images/1.-Path-and-Distance.png)First we need to define what’s a path and a distance between two vertices in order to continue searching for the shortest path!
 
 Using this terms, if there’s an edge between i and j, the path between them is [i, j], while the distance is 1. Of course, for an undirected graph (i, j) equals to (j, i) and the path [i, j] equals the path [j, i], but that isn’t true for directed graphs where the path [i, j] differs in general from [j, i].
 
-[![Rule of the Triangle](/wp-content/uploads/2012/10/2.-Rule-of-the-Triangle.png)](/wp-content/uploads/2012/10/2.-Rule-of-the-Triangle.png)Although path (shortest path) is applicable for both directed and undirectd graphs, they depend in both cases of the graph type!
+[![Rule of the Triangle](../images/2.-Rule-of-the-Triangle.png)](../images/2.-Rule-of-the-Triangle.png)Although path (shortest path) is applicable for both directed and undirectd graphs, they depend in both cases of the graph type!
 
 Here we talk about the path between two adjacent vertices, but we can go with the more general case of a path between two vertices that aren’t adjacent. 
 
 Now, getting back to the road map example, there might be many paths between city A and city B. 
 
-[![Paths Between Cities](/wp-content/uploads/2012/10/3.-Paths-Between-Cities.png)](/wp-content/uploads/2012/10/3.-Paths-Between-Cities.png)If we talk about paths between cities its pretty natural to talk about more than one “valid” path!
+[![Paths Between Cities](../images/3.-Paths-Between-Cities.png)](../images/3.-Paths-Between-Cities.png)If we talk about paths between cities its pretty natural to talk about more than one “valid” path!
 
 What we actually need to find is the shortest one. This can be very important, because we often want to get from A to B as quickly as possible using the shortest path.
 
-[![Shortest Path Between Cities](/wp-content/uploads/2012/10/4.-Shortest-Path-Between-Cities.png)](/wp-content/uploads/2012/10/4.-Shortest-Path-Between-Cities.png)The shortest path between two vertices is the path with lower distance compared to all other paths between the same points!
+[![Shortest Path Between Cities](../images/4.-Shortest-Path-Between-Cities.png)](../images/4.-Shortest-Path-Between-Cities.png)The shortest path between two vertices is the path with lower distance compared to all other paths between the same points!
 
 So first, what is a shortest path between i and j. Well, besides the strict definition, I’ll give a simplified one that might be clearer. The shortest path between i and j is such a path, which has the lowest distance compared to all other paths between i and j. 
 
 In our algorithm we will use breadth-first search. Why? That is because by using BFS by starting at a given point we expand our search consecutively starting with the closest vertices.
 
-[![BFS: Shortest Path Canvas](/wp-content/uploads/2012/10/5.-Shortest-Path-Canvas.png)](/wp-content/uploads/2012/10/5.-Shortest-Path-Canvas.png)Breadth-first search can help us find the shortest paths between a given vertex (s) and all other reachable vertices!
+[![BFS: Shortest Path Canvas](../images/5.-Shortest-Path-Canvas.png)](../images/5.-Shortest-Path-Canvas.png)Breadth-first search can help us find the shortest paths between a given vertex (s) and all other reachable vertices!
 
 Is breadth-first search enough and will it give us the correct answer – the shortest path between i and j. Actually breadth-first search will gives us even more – the shortest paths to each reachable vertex from a given starting point – the staring vertex.
 
 Why this is correct? Well, because of the nature of the breadth-first search algorithm. As we already know BFS uses a queue in order to store the front of the expansion. Usually as an abstraction BFS colors the vertices in white, gray and black, where the white vertices are those that aren’t visited yet, the gray are in the queue and the black vertices are already visited.
 
-[![White, Gray, Black](/wp-content/uploads/2012/10/6.-White-Gray-Black.png)](/wp-content/uploads/2012/10/6.-White-Gray-Black.png)By putting a color to visited/unvisited and currently inspected vertices we can get a clearer impression on how breadth-first search works!
+[![White, Gray, Black](../images/6.-White-Gray-Black.png)](../images/6.-White-Gray-Black.png)By putting a color to visited/unvisited and currently inspected vertices we can get a clearer impression on how breadth-first search works!
 
 However how can be sure that BFS will give us the shortest paths to each vertex? To answer this question and to be sure that BFS will work for us we must take a closer look at the queue. Clearly by starting at a given point the algorithm is correct – the distance is 0.
 
@@ -46,11 +46,11 @@ Now the second step is to put into the queue all the vertices adjacent to s (whe
 
 Continuing by induction we can assume that at level k we have all the shortest paths from s to all the vertices at the level k. It is clear the path between s and the vertices at level k is k, since we assume that each edge adds 1 to the path from s to i. Now by adding all the vertices adjacent (and not visited yet) to the paths of level k we get paths with length k+1 which is again the shortest paths from s to level k+1. 
 
-[![Shortest Paths](/wp-content/uploads/2012/10/7.-Shortest-Paths.png)](/wp-content/uploads/2012/10/7.-Shortest-Paths.png)Finding the shortest paths using BFS can be proved by induction!
+[![Shortest Paths](../images/7.-Shortest-Paths.png)](../images/7.-Shortest-Paths.png)Finding the shortest paths using BFS can be proved by induction!
 
 Actually we can talk about a tree built out of the graph by staring at s (which is the root of the tree).
 
-[![Spanning tree](/wp-content/uploads/2012/10/8.-Spanning-tree.png)](/wp-content/uploads/2012/10/8.-Spanning-tree.png)BFS walks through the graph by constructing a virtual tree!
+[![Spanning tree](../images/8.-Spanning-tree.png)](../images/8.-Spanning-tree.png)BFS walks through the graph by constructing a virtual tree!
 
 ## Code
 
@@ -60,7 +60,7 @@ The important thing to note is that we keep an additional information in each ve
 
 Here’s our graph:
 
-[![Graph](/wp-content/uploads/2012/10/9.-Graph.png)](/wp-content/uploads/2012/10/9.-Graph.png)The graph for the example!
+[![Graph](../images/9.-Graph.png)](../images/9.-Graph.png)The graph for the example!
 
 ```php
 class vertex
