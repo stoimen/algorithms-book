@@ -21,7 +21,6 @@ The fundamental building blocks used to organize and store data effectively.
 
 ### [02 Sorting](./02_sorting/)
 A deep dive into various techniques for ordering data, from basic bubble sorts to efficient linear-time algorithms.
-- [Beautiful Quicksort](./02_sorting/beautiful-quicksort.md)
 - [Bubble Sort](./02_sorting/bubble-sort.md)
 - [Bucket Sort](./02_sorting/bucket-sort.md)
 - [Insertion Sort](./02_sorting/insertion-sort.md)
