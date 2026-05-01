@@ -169,7 +169,7 @@ Each step of `SEARCH` descends one level, so the work is proportional to the hei
 
 [![Tree or a Linked list](../images/9.-Tree-or-a-Linked-list.png)](../images/9.-Tree-or-a-Linked-list.png)Inserting only greater keys produces a tree with no left children — indistinguishable from a linked list.
 
-[![BST Chart](../images/BST-Chart.png)](../images/BST-Chart.png)
+[![O(n) vs. O(log n) search cost](../images/BST-Chart.png)](../images/BST-Chart.png)Worst-case comparisons as `n` grows. At `n = 1000`, an unbalanced tree needs ≈1000 comparisons while a balanced one needs ≈10 — the gap widens as `n` grows.
 
 ## Further Optimization
 
