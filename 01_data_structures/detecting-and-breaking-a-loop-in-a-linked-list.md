@@ -2,224 +2,117 @@
 
 ## Introduction
 
-Linked lists are one very common and handy data structure that can be used in many cases of the practical programming. In this post we’ll assume that we’re talking about singly linked list. This means that each item is pointed by it’s previous item and it points to it’s next item. In this scenario the first item of the list, its head, doesn’t have an ancestor and the last item doesn’t have a successor.
+A singly linked list is a chain of nodes where each node points to its successor. The first node — the *head* — has no predecessor, and the last node points to `NIL`.
 
-[![Singly Linked List](../images/1.-Singly-Linked-List.png)](../images/1.-Singly-Linked-List.png) 
+[![Singly Linked List](../images/1.-Singly-Linked-List.png)](../images/1.-Singly-Linked-List.png)
 
-Sometimes, due to bugs or bad architecture or complexity of the applications we can have problems with lists. One very typical problem is having a loop, which in breve means that some of the items of the list is pointed twice, as shown on the image below.
+If something goes wrong (a buggy insert, a careless splice) the list can end up with a **loop**: a node whose `next` pointer leads back to an earlier node. A loop turns naive traversal into an infinite walk, so before we can do anything else with the list we need to (1) decide whether a loop exists, and if so (2) figure out where it starts and break it.
 
-[![Loop in a Singly Linked List](../images/2.-Loop-in-a-Singly-Linked-List.png)](../images/2.-Loop-in-a-Singly-Linked-List.png) 
+[![Loop in a Singly Linked List](../images/2.-Loop-in-a-Singly-Linked-List.png)](../images/2.-Loop-in-a-Singly-Linked-List.png)
 
-So in first place we need to be sure that there is a loop and then: how can we break it!
-
-There are several algorithms on finding a loop, but here’s one very basic. It’s known as the [Floyd](http://en.wikipedia.org/wiki/Robert_Floyd)’s algorithm or the algorithm of the tortoise and hare.
+The classic solution is **Floyd's tortoise-and-hare** algorithm, which solves both problems in `O(n)` time and `O(1)` extra space.
 
 ## Overview
 
-The Floyd’s algorithm relies on one very simple idea. Initially we set two pointers to the head of the list. 
+Send two pointers from the head: a *tortoise* that advances one node at a time and a *hare* that advances two.
 
-[![Tortoise and Hare](../images/3.-Tortoise-and-Hare.png)](../images/3.-Tortoise-and-Hare.png) 
-
-On each step we increment both pointers, but the hare is incremented by two elements, while the tortoise walks on every single item – as shown on the images bellow.
+[![Tortoise and Hare](../images/3.-Tortoise-and-Hare.png)](../images/3.-Tortoise-and-Hare.png)
 
 [![Hare](../images/4.-Hare.png)](../images/4.-Hare.png)The hare is fast and jumps by a pair of items at once!
 
-The tortoise, as it’s clear from the image bellow, is much slower.
-
 [![Tortoise](../images/5.-Tortoise.png)](../images/5.-Tortoise.png)The tortoise is much slower than the hare!
 
-As a result if we don’t have a loop in the list the hare will hit the end of the list, but if we do have a loop the hare will catch-up the tortoise inside the loop.
+Two outcomes are possible:
 
-[![Movements](../images/6.-Movements.png)](../images/6.-Movements.png)Since the hare is faster and both the hare and the tortoise are in the loop – the faster pointer will catch-up the tortoise!
+- **No loop.** The hare reaches `NIL` first — the list ends.
+- **Loop exists.** Once both pointers are inside the cycle, the hare gains exactly one position on the tortoise per step, so it must catch up within at most `M` steps (where `M` is the loop length). The pointers meet *somewhere inside the loop* — but not necessarily at the loop's entry point.
 
-## Code
+[![Movements](../images/6.-Movements.png)](../images/6.-Movements.png)Once both runners are inside the loop the hare closes the gap by one each step, so a meeting is guaranteed.
 
-Assuming a typical representation of a singly linked list here’s a sample code in PHP.
+Locating the *entry point* of the loop takes a second phase. There's a classic identity behind it: if `H` is the distance from the head to the loop's start and the meeting point is `k` steps into the loop, then the distance from the meeting point back around to the loop's start equals `H` (mod `M`). So if we reset one pointer to the head and walk both pointers one step at a time, they meet exactly at the loop's entry.
 
-## The Item Class
+## Implementation
 
-```php
-class Item
-{
-    protected $_name = '';
-    protected $_key = '';
-    protected $_next = null;
- 
-    public function __construct($key, $name)
-    {
-        $this->_key = $key;
-        $this->_name = $name;
-    }
- 
-    public function setNext(&$next) { $this->_next = $next; }
-    public function &getNext() { return $this->_next; }
- 
-    public function setKey($key) { $this->_key = $key; }
-    public function getKey() { return $this->_key; }
- 
-    public function setName($name) { $this->_name = $name; }
-    public function getName() { return $this->_name; }
- 
-    public function __toString()
-    {
-        return $this->_key . ' ' . $this->_name . "\n";
-    }
-}
+### The node
+
+```
+Node:
+    key
+    next  ← NIL
 ```
 
-## The List Class
+### Appending a node
 
-```php
-class Linked_List 
-{
-    protected $_head = null;
- 
-    public function insert($item)
-    {
-        if ($this->_head == null) {
-            $this->_head = $item;
-            return;
-        }
- 
-        $current = $this->_head;
-        while ($current->getNext()) {
-            $current = $current->getNext();
-        }
- 
-        $current->setNext($item);
-    }
- 
-    public function detectLoop()
-    {
-        $tortoise = $hare = $this->_head;
- 
-        if ($hare->getNext() != null) {
-            $hare = $hare->getNext()->getNext();
-        } else {
-            return FALSE;
-        }
- 
-        while ($hare) {
-            if ($hare == $tortoise) {
-                return $hare;
-            }
- 
-            if ($hare->getNext()) {
-                $hare = $hare->getNext()->getNext();
-            } else {
-                return FALSE;
-            }
- 
-            $tortoise = $tortoise->getNext();
-        }
- 
-        return FALSE;
-    }
- 
-    protected function _isReachable($a, $b) 
-    {
-        $current = $b;
-        while ($current->getNext() != $b) {
-            if ($current->getNext() == $a) {
-                return $current;
-            }
-            $current = $current->getNext();
-        }
- 
-        return FALSE;
-    }
- 
-    public function breakLoop()
-    {
-        if (FALSE === ($loop = $this->detectLoop())) {
-            return;
-        }
- 
-        $startOfTheLoop = $this->_head;
- 
-        while (FALSE === ($lastLoopItem = $this->_isReachable($startOfTheLoop, $loop))) {
-            $startOfTheLoop = $startOfTheLoop->getNext();
-        }
- 
-        $pseudoNext = null;
-        $lastLoopItem->setNext($pseudoNext);
-    }
- 
-    public function __toString()
-    {
-        $current = $this->_head;
-        $output = '';
- 
-        while ($current) {
-            $output .= $current->getKey() . ' ' . $current->getName() . "\n";
-            $current = $current->getNext();
-        }
- 
-        return $output;
-    }
-}
+```
+APPEND(list, item):
+    if list.head = NIL then
+        list.head ← item
+        return
+    cur ← list.head
+    while cur.next ≠ NIL do
+        cur ← cur.next
+    cur.next ← item
 ```
 
-## Initialization
+### Detecting a loop
 
-```php
-$items = array();
-$ll = new Linked_List();
- 
-for ($i = 0; $i insert($items[$i]);
-}
- 
-// 0 Item #0
-// 1 Item #1
-// ...
-// 99 Item #99
-echo $ll;
+Returns the meeting point inside the loop, or `NIL` if there is no loop.
+
+```
+DETECT_LOOP(list):
+    tortoise ← list.head
+    hare     ← list.head
+    while hare ≠ NIL and hare.next ≠ NIL do
+        tortoise ← tortoise.next
+        hare     ← hare.next.next
+        if hare = tortoise then
+            return hare           // meeting point inside the loop
+    return NIL                    // hare hit the end → no loop
 ```
 
-Breaking the Loop
+### Finding the loop's entry
 
-In order to break the loop we need first to check whether an item is reachable from within the loop. Once we know that we should return the last loop item in order to improve the performance of the next method – breakLoop. This is made with the following method:
+Once we have a meeting point, reset the tortoise to the head and advance both pointers one step at a time. They meet at the entry to the loop.
 
-```php
-protected function _isReachable($a, $b) 
-    {
-        $current = $b;
-        while ($current->getNext() != $b) {
-            if ($current->getNext() == $a) {
-                return $current;
-            }
-            $current = $current->getNext();
-        }
- 
-        return FALSE;
-    }
+```
+LOOP_START(list, meet):
+    tortoise ← list.head
+    hare     ← meet
+    while tortoise ≠ hare do
+        tortoise ← tortoise.next
+        hare     ← hare.next
+    return tortoise               // entry point of the loop
 ```
 
-Now we can break the loop by removing the double link to the first item of the loop.
+### Breaking the loop
 
-```php
-// member of Linked_List
-    public function breakLoop()
-    {
-        if (FALSE === ($loop = $this->detectLoop())) {
-            return;
-        }
- 
-        $startOfTheLoop = $this->_head;
- 
-        while (FALSE === ($lastLoopItem = $this->_isReachable($startOfTheLoop, $loop))) {
-            $startOfTheLoop = $startOfTheLoop->getNext();
-        }
- 
-        $pseudoNext = null;
-        $lastLoopItem->setNext($pseudoNext);
-    }
+To break the loop, find the node *just before* the entry point (the last node of the loop) and clear its `next`.
+
+```
+BREAK_LOOP(list):
+    meet ← DETECT_LOOP(list)
+    if meet = NIL then
+        return                    // nothing to break
+    start ← LOOP_START(list, meet)
+    cur ← start
+    while cur.next ≠ start do
+        cur ← cur.next
+    cur.next ← NIL
 ```
 
 ## Complexity
 
-Assuming that the list length is N and the loop length is M, we’ll break the loop in O((N-M)*M) time complexity only after we’ve found the loop. The question is how fast we can find the loop with the algorithm above? Well the hare is pretty fast and can pass through some of the items of the loop several times, but the tortoise walks sequentially over all the items. The question is will the hare catch-up the tortoise before the last one gets to the end of the loop? The answer is yes and we can think of a single linked list without loops where there are two pointers starting from the beginning of the list. The same question can be translated to: will the faster pointer reach the end before the slower one gets to the middle of the list – well yes.
+Let `n` be the number of nodes in the list and `m` the loop length (`m ≤ n`).
 
-Finally the answer is O(N) for answering whether there’s a loop and O(M*(N-M)) to break it.
+| Step | Time | Space |
+|---|---|---|
+| `DETECT_LOOP` | `O(n)` | `O(1)` |
+| `LOOP_START` | `O(n)` | `O(1)` |
+| `BREAK_LOOP` (last node walk) | `O(m)` | `O(1)` |
+| **Total** | **`O(n)`** | **`O(1)`** |
 
-However the good news is that when we work with linked lists we often work only with pointers (which is our case in this post) and thus we don’t need additional memory which makes them very useful. Actually we will see the same advantage in the next algorithm – reversing a linked list, which is more effective than reversing an array.
+The constant-space property is what makes Floyd's algorithm interesting: an obvious alternative — store every visited node in a hash set and check for repeats — also runs in `O(n)` time but uses `O(n)` extra memory.
+
+## Application
+
+Cycle detection is a recurring sub-problem in graph algorithms (any directed graph where each node has out-degree one is structurally a linked list with a possible loop), in detecting infinite redirect chains, and in some number-theoretic algorithms — Pollard's rho for integer factorisation uses the same tortoise-and-hare idea on a sequence generated by a function instead of `next` pointers.
