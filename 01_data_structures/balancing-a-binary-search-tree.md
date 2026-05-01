@@ -141,7 +141,7 @@ The traversal is `O(n)`. Each `BUILD` step performs an `INSERT` that walks an `O
 
 Compared to non-balanced binary search trees we’re sure that searching into a balanced trees is quick enough. The maximum height of the tree is log(n) so the worst-case searching is O(log(n)).
 
-[![BST Chart](../images/BST-Chart.png)](../images/BST-Chart.png)Compared to searching in linked lists in O(n) time, searching into a balanced binary tree is O(log(n)) in the worst-case scenario!
+[![Search cost: balanced BST vs. linked list](../images/6.-Search-Cost-Balanced-vs-Linked-List.png)](../images/6.-Search-Cost-Balanced-vs-Linked-List.png)Worst-case comparisons as `n` grows: a linked list scales linearly, while a balanced BST stays nearly flat — at `n = 1,000,000` that is roughly `20` comparisons versus `1,000,000`.
 
 ## Application
 
