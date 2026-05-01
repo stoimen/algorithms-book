@@ -14,29 +14,29 @@ Since we know how to construct a binary search tree the only thing left is to ke
 
 ## Overview
 
-In order to balance a tree we can go for the very basic and intuitive approach. First let’s take a look of one non-balanced tree.
+The key observation is simple: **the middle element of a sorted sequence makes an ideal root.** Half of the remaining keys are smaller and half are larger, so each subtree gets roughly the same number of nodes.
 
 [![Balanced vs. Non-Balanced](../images/3.-Balanced-vs.-Non-Balanced.png)](../images/3.-Balanced-vs.-Non-Balanced.png)
 
-Compared to the balanced tree on the right from the image above with the same items we see that the root is approximately equal to its middle item. I.e. 4 is the middle item of the sequence [1,2,3,4,5,6,7]!
+For example, given `[1, 2, 3, 4, 5, 6, 7]`, choosing `4` as the root produces a balanced tree, while inserting the values in their original order produces a tree that degenerates into a linked list.
 
-If we take a look of the sequence [2 3 4], clearly by building a binary tree it will look like a linked list. However if we choose the middle item for a root – we’ll easy build a balanced tree. So the only thing to do is to get the middle item out of a list.
+That gives us a straightforward rebalancing recipe in three steps:
 
-We now see that building a balanced binary tree out of a sorted linked list isn’t that difficult. In the other hand, as I said above, on each insert we’ll have to rebalance the tree. You can think of the tree out of the values [1,2,3,4,5] and the same tree after inserting [44,45,46,47,48]. Clearly the root of the resulting tree will no longer be 3. 
+1. **Flatten** the tree into a sorted list. An in-order (*left – root – right*) traversal of a BST already visits keys in sorted order, so this is essentially free.
+2. **Pick the middle item** as the new root — trivial once we know the list’s length.
+3. **Rebuild** by applying the same procedure to the left and right halves.
 
-So we need to implement the re-balancing in three basic operations. First we need to build a linked list out of a balanced binary tree. On the second place we’ll have to find the middle item and on the third place we’ll have to build again a balanced search tree. 
-
-Hopefully the first two tasks are easy to implement, because making out a sorted list out of a binary search tree is very easy. We need just to walk through the tree from left-root-right recursively. Because smaller items are in the left sub-tree and greater items are on the right we’re sure that the resulting list will be sorted. Then finding the middle item is as easy as finding the middle index of an array know its length.
+The catch is that the tree’s middle changes whenever we insert or delete. A tree built from `[1,2,3,4,5]` has root `3`; after inserting `[44,45,46,47,48]` the middle shifts, so a strict definition of "balanced" would force us to rebalance after every modification.
 
 ## Balancing Optimization
 
-Of course the main problem of re-balancing a tree on each insert/delete is that this operations will be slow and soon or later we’ll have problems. That can happen if we change often our data structure. That’s why we should think of some optimization. 
+Rebalancing on every insert and delete is expensive, so in practice we batch the work.
 
-Normally we insert and re-balance on each step, which is slow. In the other hand we can do bulk insert forgetting about the re-balancing for a while. Only after the inserts are done we can go for re-balancing the entire tree.
+**Bulk insert.** Insert many keys without rebalancing in between, then rebalance once at the end. The intermediate tree may be skewed, but we pay the rebalance cost only once instead of once per insert.
 
 [![Bulk Insert with Only one Balance](../images/4.-Bulk-Insert-with-Only-one-Balance.png)](../images/4.-Bulk-Insert-with-Only-one-Balance.png)Doing bulk insert/delete and only one balancing will make the data structure faster!
 
-The same approach we can use with bulk delete. We can just set to NIL the items we want to delete, but we can keep them in memory for a while. Thus the search will stay relatively fast without rebalancing the tree. However this approach can be used carefully because we’ll keep some data in the memory without actually using it. 
+**Lazy delete.** Instead of physically unlinking a node, mark its data as `NIL` and leave the structure intact. Searches remain fast because the shape of the tree is unchanged; the deleted slots are reclaimed during the next rebalance. The trade-off is memory: tombstoned nodes occupy space until then, so this only pays off when deletes are frequent and rebalances are rare.
 
 [![Bulk Delete](../images/5.-Bulk-Delete.png)](../images/5.-Bulk-Delete.png)We can NULL items without actually removing the pointers (links) and the structure of the tree!
 
