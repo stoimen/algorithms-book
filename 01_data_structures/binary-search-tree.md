@@ -94,6 +94,59 @@ SEARCH(node, key):
         return SEARCH(node.right, key)
 ```
 
+### Deleting a key
+
+Deletion is the only BST operation with real subtlety. After locating the node `z` we want to remove, we have to splice it out without breaking the BST property. There are three cases:
+
+1. **`z` is a leaf** — just detach it from its parent.
+2. **`z` has one child** — replace `z` with that child.
+3. **`z` has two children** — `z` cannot simply be removed, because its slot has to keep ordering both subtrees. We replace `z`'s key with its **in-order successor** (the smallest key in `z.right`), then delete that successor from `z.right`. The successor is the leftmost node of `z.right`, so by construction it has no left child and falls into case 1 or 2.
+
+A helper finds the minimum of a sub-tree:
+
+```
+MIN(node):
+    while node.left ≠ NIL do
+        node ← node.left
+    return node
+```
+
+Then `DELETE` dispatches on the three cases:
+
+```
+DELETE(root, key):
+    z ← SEARCH(root, key)
+    if z = NIL then
+        return                            // key not in tree
+
+    if z.left = NIL and z.right = NIL then
+        REPLACE(z, NIL)                   // case 1: leaf
+    else if z.left = NIL then
+        REPLACE(z, z.right)               // case 2a: only right child
+    else if z.right = NIL then
+        REPLACE(z, z.left)                // case 2b: only left child
+    else
+        s ← MIN(z.right)                  // case 3: in-order successor
+        z.key ← s.key                     // copy successor's key into z
+        REPLACE(s, s.right)               // splice out the successor
+```
+
+`REPLACE(old, new)` rewires `old`'s parent to point at `new` (or makes `new` the tree's root if `old` was the root) and sets `new.parent` accordingly:
+
+```
+REPLACE(old, new):
+    if old.parent = NIL then
+        root ← new
+    else if old = old.parent.left then
+        old.parent.left ← new
+    else
+        old.parent.right ← new
+    if new ≠ NIL then
+        new.parent ← old.parent
+```
+
+Each of these steps walks at most one root-to-leaf path, so deletion is `O(h)` where `h` is the height of the tree — the same bound as search.
+
 ### Traversing in order
 
 Visiting *left – root – right* yields the keys in ascending order — useful for printing and a building block for rebalancing (see [Balancing a Binary Search Tree](./balancing-a-binary-search-tree.md)).
@@ -126,4 +179,4 @@ Because the worst case is so bad, in practice we either trust that input is unor
 
 ## Application
 
-Binary search trees are cheap to build and maintain, and they give `O(log n)` search whenever the input is reasonably unordered — without the bookkeeping cost of a self-balancing variant. Beyond lookup, the in-order, pre-order, and post-order traversals defined above are useful whenever data needs to be processed in a key-driven order: printing a sorted dump, range queries, or feeding a rebalance routine.
+Binary search trees are cheap to build and maintain, and they give `O(log n)` search, insert, and delete whenever the input is reasonably unordered — without the bookkeeping cost of a self-balancing variant. Beyond lookup, the in-order traversal defined above is useful whenever data needs to be processed in key order: printing a sorted dump, range queries, or feeding a rebalance routine.
