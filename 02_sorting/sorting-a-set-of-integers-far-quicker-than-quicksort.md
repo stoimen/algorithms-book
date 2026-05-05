@@ -1,6 +1,6 @@
 # Friday Algorithms: Sorting a Set of Integers – Far Quicker than Quicksort!
 
-Yes! It’s really really fast, and it’s far quicker than the [quicksort](/2010/06/18/friday-algorithms-iterative-quicksort/) algorithm, which is considered as the fastest sorting algorithm in practice. However how it’s possible to be faster than the quicksort, which is the fastest algorithm?! Is that true? Actually it’s true, but only in few cases. It works with integers, you’ve to know the first and the last element from that set and you’ve to be sure that every element is unique
+Yes! It’s really really fast, and it’s far quicker than the [quicksort](./quicksort.md) algorithm, which is considered as the fastest sorting algorithm in practice. However how it’s possible to be faster than the quicksort, which is the fastest algorithm?! Is that true? Actually it’s true, but only in few cases. It works with integers, you’ve to know the first and the last element from that set and you’ve to be sure that every element is unique
 
 Imagine you’ve a set of numbers all of them greater than 1 and lesser than 1000. Of course you’re not suppose to have all of the integers between 1 and 1000, but only few of them – think of 500 numbers between 1 and 1000! Here’s important to note – that this is only an example, you can have far more than only few numbers between 1 and 1000 – what about the numbers between 1 and 1,000,000 – this is a big set, isn’t it.
 

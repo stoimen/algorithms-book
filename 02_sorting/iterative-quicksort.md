@@ -2,7 +2,7 @@
 
 ## Sorting Algorithms
 
-Last Friday I wrote a quick [post](/2010/06/11/friday-algorithms-quicksort-difference-between-php-and-javascript/) showing the recursive version of quicksort on both PHP and JavaScript, but this time let me begin with some breve history. Actually sorting and searching algorithms are widely used in the computer science and are developed and improved many times in the last 60 years or so. As the world goes so wired, all the information around is stored in data bases and the need of fast search methods is critical. But as we all know from our experience, it is far more easy to search into a sorted data structure. Such are all the dictionaries we use. Can you, actually, imagine to search for a word in a dictionary where all the words don’t follow the alphabetical order and are dispersed chaotically instead?
+Last Friday I wrote a quick [post](./quicksort-difference-between-php-and-javascript.md) showing the recursive version of quicksort on both PHP and JavaScript, but this time let me begin with some breve history. Actually sorting and searching algorithms are widely used in the computer science and are developed and improved many times in the last 60 years or so. As the world goes so wired, all the information around is stored in data bases and the need of fast search methods is critical. But as we all know from our experience, it is far more easy to search into a sorted data structure. Such are all the dictionaries we use. Can you, actually, imagine to search for a word in a dictionary where all the words don’t follow the alphabetical order and are dispersed chaotically instead?
 
 That’s why from the early years of computer science both sorting and searching algorithms go together. I’ll cover more on search algorithms in the future, but as I started with quicksort – one of the many sorting algorithms, let me mention that this algorithm is not anonymous! What I mean is that his author is well known and he’s recognized in the computer science community. His name is …
 
@@ -22,7 +22,7 @@ The quicksort was born!
 
 There are two main directions in solving such problems as the sorting algorithms. Recursive way and the iterative way. Every developer knows what is recursive and what’s iterative. We like to say that recursive is more “elegant” solution, than the iterative, but it’s interesting to say that both are completely interchangeable. Yeah, every recursion can be modeled with a stack (as the recursion is always converted into a stack on the machine level), and every loop can be converted to a recursion. It’s interesting to say that the second direction is easier, while the switch from recursion to stack it’s not always obvious and easy!
 
-Here’s a code snippet from the recursive version of the quicksort, I’ve [posted](/2010/06/11/friday-algorithms-quicksort-difference-between-php-and-javascript/) last Friday:
+Here’s a code snippet from the recursive version of the quicksort, I’ve [posted](./quicksort-difference-between-php-and-javascript.md) last Friday:
 
 ```javascript
 return quicksort(left).concat(pivot, quicksort(right));

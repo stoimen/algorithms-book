@@ -14,7 +14,7 @@ The fundamental building blocks used to organize and store data effectively.
 - [Binary Search Tree](./01_data_structures/binary-search-tree.md)
 - [Detecting and Breaking a Loop in a Linked List](./01_data_structures/detecting-and-breaking-a-loop-in-a-linked-list.md)
 - [Finding the Lowest Common Ancestor](./01_data_structures/finding-the-lowest-common-ancestor.md)
-- [Heap and Heapsort](./01_data_structures/heap-and-heapsort.md)
+- [Heap](./01_data_structures/heap.md)
 - [JavaScript Stack](./01_data_structures/javascript-stack.md)
 - [Linked List](./01_data_structures/linked-list.md)
 - [Stack and Queue](./01_data_structures/stack-and-queue.md)
@@ -23,6 +23,8 @@ The fundamental building blocks used to organize and store data effectively.
 A deep dive into various techniques for ordering data, from basic bubble sorts to efficient linear-time algorithms.
 - [Bubble Sort](./02_sorting/bubble-sort.md)
 - [Bucket Sort](./02_sorting/bucket-sort.md)
+- [Counting Sort](./02_sorting/counting-sort.md)
+- [Heapsort](./02_sorting/heapsort.md)
 - [Insertion Sort](./02_sorting/insertion-sort.md)
 - [Iterative Quicksort](./02_sorting/iterative-quicksort.md)
 - [JavaScript Bubble Sort](./02_sorting/javascript-bubble-sort.md)

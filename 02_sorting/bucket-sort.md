@@ -16,7 +16,7 @@ That is why we can use bucket sort.
 
 ## Overview
 
-Bucket sort it’s the perfect sorting algorithm for the sequence above. We must know in advance that the integers are fairly well distributed over an interval (i, j). Then we can divide this interval in N equal sub-intervals (or buckets). We’ll put each number in its corresponding bucket. Finally for every bucket that contains more than one number we’ll use some linear sorting algorithm.
+Bucket sort it’s the perfect sorting algorithm for the sequence above. We must know in advance that the integers are fairly well distributed over an interval (i, j). Then we can divide this interval in N equal sub-intervals (or buckets). We’ll put each number in its corresponding bucket. Finally for every bucket that contains more than one number we’ll sort the items inside that bucket.
 
 ![Image](../images/google_drawing_7c350480fa.png)
 
@@ -35,13 +35,13 @@ That is why the sequence [1, 2, 3, 2, 1, 2, 3, 1] won’t be sorted faster than 
 
 ## Complexity
 
-The complexity of bucket sort isn’t constant depending on the input. However in the average case the complexity of the algorithm is O(n + k) where n is the length of the input sequence, while k is the number of buckets. 
+The complexity of bucket sort isn’t constant depending on the input. However, when the input is well distributed and the number of buckets is chosen well, the expected complexity of the algorithm is `O(n + k)`, where `n` is the length of the input sequence, while `k` is the number of buckets. 
 
-The problem is that its worst-case performance is O(n^2) which makes it as slow as bubble sort.
+The problem is that its worst-case performance is `O(n^2)` when too many items land in the same bucket.
 
 ## Application
 
-As the other two linear time sorting algorithms (radix sort and counting sort) bucket sort depends so much on the input. The main thing we should be aware of is the way the input data is dispersed over an interval. 
+As with other non-comparison sorting algorithms, such as [radix sort](./radix-sort.md) and [counting sort](./counting-sort.md), bucket sort depends so much on the input. The main thing we should be aware of is the way the input data is dispersed over an interval.
 
 Another crucial thing is the number of buckets that can dramatically improve or worse the performance of the algorithm. 
 

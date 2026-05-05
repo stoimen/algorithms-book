@@ -95,4 +95,4 @@ One of the problems with bubble sort is that it consists of too much swapping, b
 
 We have to swap only 3 with 4. 
 
-Note that in the best case bubble sort’s complexity is O(n) – faster than quicksort’s best case!
+Note that the naive implementation of bubble sort remains `O(n^2)` even on sorted input because it still performs the same nested passes. Bubble sort has a best-case complexity of `O(n)` only when implemented with an early-exit flag that stops after a pass with no swaps.

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-When it comes to sorting items by comparing them [merge sort](/2012/03/05/computer-algorithms-merge-sort/) is one very natural approach. It is natural, because simply divides the list into two equal sub-lists then sort these two partitions applying the same rule. That is a typical divide and conquer algorithm and it just follows the intuitive approach of speeding up the sorting process by reducing the number of comparisons. However there are other “divide and conquer” sorting algorithms that do not follow the merge sort scheme, while they have practically the same success. Such an algorithm is quicksort.
+When it comes to sorting items by comparing them [merge sort](./merge-sort.md) is one very natural approach. It is natural, because simply divides the list into two equal sub-lists then sort these two partitions applying the same rule. That is a typical divide and conquer algorithm and it just follows the intuitive approach of speeding up the sorting process by reducing the number of comparisons. However there are other “divide and conquer” sorting algorithms that do not follow the merge sort scheme, while they have practically the same success. Such an algorithm is quicksort.
 
 ## Overview
 
@@ -16,7 +16,9 @@ First of all obviously the choice of a pivot is the bottleneck. Indeed it all de
 
 ## Choosing a pivot
 
-Of course the best pivot is the middle element from the list. Thus the list will be divided into two fairly equal sub-lists. The problem is that there’s not an easy way to get the middle element from a list and this will slow down the algorithm. So typically we can get for a pivot the first or the last item of the list.
+The best pivot is an element that divides the list into two fairly equal sub-lists. The problem is that there’s not an easy way to know that element in advance without doing extra work. So simple implementations often take the first or last item of the list as the pivot.
+
+That choice is easy to implement, but it also explains the worst case. If we always choose the first or last item as the pivot, already sorted or reverse-sorted input can split into one empty side and one side with nearly all remaining elements. Randomized or median-of-three pivot selection reduces that risk in practice, although quicksort’s worst-case Big-O remains the same.
 
 After choosing a pivot the rest is simple. Put every item with a greater value on the right and every item with a lesser value on the left. Then we must sort the left and right sub-lists just as we did with the initial list. 
 
@@ -79,7 +81,7 @@ print_r(quicksort_iterative($list));
 
 ## Complexity
 
-The complexity of quicksort in the average case is O(n*log(n)) – same as Merge sort. The problem is that in the worst case it is O(n2) – same as bubble sort. Obviously the worst case is when we have an already sorted list, and we constantly take for a pivot the last element of the list. But we should consider that in practice we don’t quite use sorted lists that we have to sort again, right?
+The complexity of quicksort in the average case is `O(n log n)` – same as merge sort. The problem is that in the worst case it is `O(n^2)` – same as simple quadratic sorts. One common worst case happens when we have an already sorted list and constantly take the first or last element as the pivot.
 
 [![Quicksort average and worst case scenarios](../images/Quicksort.Average.Worst_.png)](../images/Quicksort.Average.Worst_.png)
 
@@ -90,7 +92,7 @@ Quicksort is a great sorting algorithm and developers often go for it, but let�
 ## Why using quicksort
 
 - Recursive implementation is easy
-- In general its speed is same as merge sort – O(n*log(n))
+- In general its average-case speed is same as merge sort – `O(n log n)`
 - Elegant solution with no tricky merging as merge sort
 
 ## Why not using quicksort

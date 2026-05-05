@@ -2,136 +2,76 @@
 
 ## Introduction
 
-Algorithms always depend on the input. We saw that general purpose sorting algorithms as insertion sort, bubble sort and [quicksort](/2012/03/13/computer-algorithms-quicksort/) can be very efficient in some cases and inefficient in other. Indeed [insertion](/2012/02/13/computer-algorithms-insertion-sort/) and [bubble sort](/2012/02/20/computer-algorithms-bubble-sort/) are considered slow, with best-case complexity of O(n2), but they are quite effective when the input is fairly sorted. Thus when you have a sorted array and you add some “new” values to the array you can sort it quite effectively with insertion sort. On the other hand quicksort is considered one of the best general purpose sorting algorithms, but while it’s a great algorithm when the data is randomized it’s practically as slow as bubble sort when the input is almost or fully sorted. 
+The first question when we see the phrase “sorting in linear time” should be: where’s the catch? Indeed there’s a catch, and the thing is that we can’t sort just anything in linear time.
 
-Now we see that depending on the input algorithms may be effective or not. For almost sorted input insertion sort may be preferred instead of quicksort, which in general is a faster algorithm.
+Since we speak about integers, we can think of faster sorting algorithms than usual comparison-based sorting. [Counting sort](./counting-sort.md) can be very fast in some cases, but also very slow in others, so it should be used carefully. Another non-comparison sorting algorithm is radix sort.
 
-Just because the input is so important for an algorithm efficiency we may ask are there any sorting algorithms that are faster than O(n.log(n)), which is the average-case complexity for merge sort and quicksort. And the answer is yes there are faster, linear complexity algorithms, that can sort data faster than quicksort, merge sort and heapsort. But there are some constraints!
-
-Everything sounds great but the thing is that we can’t sort any particular data with linear complexity, so the question is what rules the input must follow in order to be sorted in linear time.
-
-Such an algorithm that is capable of sorting data in linear O(n) time is radix sort and the domain of the input is restricted – it must consist only of integers.
+Radix sort avoids the main disadvantage of counting sort on sparse ranges. Instead of allocating a count for every possible integer value, radix sort sorts by digit or character position using a stable sorting step.
 
 ## Overview
 
-Let’s say we have an array of integers which is not sorted. Just because it consists only of integers and because array keys are integers in programming languages we can implement radix sort. 
+The idea behind radix sort is simple. We must look at our integer sequence as a string sequence. OK, to become clearer let me give you an example. Our sequence is `[12, 2, 23, 33, 22]`. First we take the leftmost digit of each number. Thus we must compare `[_2, 2, _3, _3, _2]`. Clearly we can assume that since the second number `2` is only a one digit number we can fill it up with a leading `0`, to become `02` or `_2` in our example: `[_2, _2, _3, _3, _2]`. Now we sort this sequence with a stable sort algorithm.
 
-First for each value of the input array we put the value of “1” on the key-th place of the temporary array as explained on the following diagram.
+## What is a Stable Sort Algorithm
 
-[![Radix sort first pass](../images/RadixSortBasicIdea.png)](../images/RadixSortBasicIdea.png)Radix sort first pass
-
-If there are repeating values in the input array we increment the corresponding value in the temporary array. After “initializing” the temporary array with one pass (with linear complexity) we can sort the input. 
-
-[![Radix sort second pass](../images/RadixSortBasicIdea2ndpass.png)](../images/RadixSortBasicIdea2ndpass.png)Radix sort second pass
-
-## Implementation
-
-Implementing radix sort is very easy in fact, which is great. The thing is that old-school programming languages weren’t so flexible and we needed to initialize the entire temporary array. That leads to another problem – we must know the interval of values from the input. Fortunately nowadays programming languages and libraries are more flexible so we can initialize our temporary array even if we don’t know the interval of input values, as on the example bellow. PHP is somewhere in the middle – it’s flexible enough to build-up arrays in the memory without knowing their size in advance, but we still must ksort them.
+A stable sort algorithm is an algorithm that sorts a list while preserving the relative order of elements with equal keys. In terms of PHP this means that:
 
 ```php
-$list = array(4, 3, 5, 9, 7, 2, 4, 1, 6, 5);
- 
-function radix_sort($input)
-{
-    $temp = $output = array();
-	$len = count($input);
- 
-    for ($i = 0; $i  0) 
-			? ++$temp[$input[$i]]
-			: 1;
-    }
- 
-    ksort($temp);
- 
-    foreach ($temp as $key => $val) {
-		if ($val == 1) {
-			$output[] = $key; 
-		} else {
-			while ($val--) {
-				$output[] = $key;
-			}
-        }
-    }
- 
-    return $output;
-}
- 
-// 1, 2, 3, 4, 4, 5, 5, 6, 7, 9
-print_r(radix_sort($list));
+array(0 => 12, 1=> 13, 2 => 12);
 ```
 
-The problem is that PHP needs ksort – which is completely foolish as we’re trying to sort an array using “another” sorting method, but to overcome this you must know the interval of values in advance and initialize a temporary array with 0s, as on the example bellow.
+Will be sorted as follows:
 
 ```php
-define(MIN, 1);
-define(MAX, 9);
-$list = array(4, 3, 5, 9, 7, 2, 4, 1, 6, 5);
- 
-function radix_sort(&$input)
-{
-    $temp = array();
-	$len = count($input);
- 
-	// initialize with 0s
-    $temp = array_fill(MIN, MAX-MIN+1, 0);
- 
-    foreach ($input as $key => $val) {
-    	$temp[$val]++;
-    }
- 
-    $input = array();
-    foreach ($temp as $key => $val) {
-	if ($val == 1) {
-		$input[] = $key;
-	} else {
-		while ($val--) {
-			$input[] = $key;
-		}
-	}
-    }
-}
- 
-// 4, 3, 5, 9, 7, 2, 4, 1, 6, 5
-var_dump($list);
- 
-radix_sort(&$list);
- 
-// 1, 2, 3, 4, 5, 5, 6, 7, 8, 9
-var_dump($list);
+array(0 => 12, 2 => 12, 1 => 13);
 ```
 
-Here the input is modified during the sorting process and it’s used as result.
+Thus the third element becomes second following the first element. Note that the third and the first element are equal, but the third appears later in the sequence so it remains later in the sorted sequence.
+
+In the radix sort example, we need a stable sort algorithm, because we need to worry about only one digit position at a time.
+
+So what happens in our example after we sort the sequence?
+
+![Image](../images/google_drawing_987d4cec2b.png)
+
+As we can see we’re far from a sorted sequence, but what if we proceed with the next position – the decimal digit?
+
+Then we end up with this:
+
+![Image](../images/google_drawing_00de8ede77.png)
+
+Now we have a sorted sequence, so let’s summarize the algorithm in a short pseudo code.
+
+## Pseudo Code
+
+The simple approach behind radix sort can be described as pseudo code, assuming that we’re sorting decimal integers.
+
+1. For each digit position from least significant to most significant
+2. Sort the numbers by this digit using a stable sort algorithm
+
+The thing is that here we talk about decimal, but actually this algorithm can be applied equally on any numeric system. That is why it’s called “radix” sort.
+
+Thus we can sort binary numbers, hexadecimals, and other positional representations.
+
+It’s important to note that this algorithm can be also used to sort strings alphabetically.
+
+```
+[ABC, BBC, ABA, AC]
+[__C, __C, __A, __C] => [ABA, ABC, BBC, AC]
+[_B_, _B_, _B_, _A_] => [AC, ABA, ABC, BBC]
+[___, A__, A__, B__] => [AC, ABA, ABC, BBC]
+```
+
+That is correct because we can treat the alphabet as another positional system.
 
 ## Complexity
 
-The complexity of radix sort is linear, which in terms of omega means O(n). That is a great benefit in performance compared to O(n.log(n)) or even worse with O(n2) as we can see on the following chart.
+Radix sort runs in `O(d(n + b))`, where `n` is the number of items, `d` is the number of digit positions, and `b` is the radix or base used by the stable sorting step. For a fixed base and a bounded number of digits, this is linear in the number of input items.
 
-[![Linear function compared to n.log(n) and n^2](../images/RadixSortComplexity.png)](../images/RadixSortComplexity.png)Linear function compared to n.log(n) and n^2
+However, if the number of digit positions grows with `n`, the runtime grows too. For example, if we sort `n` numbers with `n` digit positions, the complexity becomes `O(n^2)`.
 
-## Why using radix sort
+We must also remember that implementing radix sort and a supporting stable sort algorithm needs extra space.
 
-## 1. It’s fast
+## Application
 
-Radix sort is very fast compared to other sorting algorithms as we saw on the diagram above. This algorithm is very useful in practice because in practice we often sort sets of integers.
-
-[![Pros of radix sort](../images/Prosofradixsort.png)](../images/Prosofradixsort.png) 
-
-## 2. It’s easy to understand and implement
-
-Even a beginner can understand and implement radix sort, which is great. You need no more than few loops to implement it.
-
-## Why NOT using radix sort
-
-## 1. Works only with integers
-
-If you’re not sure about the input better do not use radix sort. We may think that our input consists only of integers and we can go for radix sort, but what if in the future someone passes floats or strings to our routine.
-
-[![Cons of radix sort](../images/Consofradixsort.png)](../images/Consofradixsort.png) 
-
-## 2. Requires additional space
-
-Radix sort needs additional space – at least as much as the input.
-
-## Final Words
-
-Radix sort is restricted by the input’s domain, but I must say that in practice there are tons of cases where only integers are sorted. This is when we get some data from the db based on primary keys – typically primary in database tables are integers as well. So practically there are lots of cases of sorting integers, so radix sort may be one very, very useful algorithm and it is so cool that it is also easy to implement.
+Sorting integers can be faster than sorting just anything, so any time we need to implement a sorting algorithm we must carefully investigate the input data. And that’s also the big disadvantage of this algorithm – we must know the input in advance, which is rarely the case.

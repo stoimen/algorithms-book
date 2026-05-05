@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Basically sorting algorithms can be divided into two main groups. Such based on comparisons and such that are not. I already posted about some of the algorithms of the first group. Insertion sort, bubble sort and Shell sort are based on the comparison model. The problem with these three algorithms is that their complexity is O(n2) so they are very slow. 
+Basically sorting algorithms can be divided into two main groups. Such based on comparisons and such that are not. I already posted about some of the algorithms of the first group. Insertion sort, bubble sort and Shell sort are based on the comparison model. These algorithms often run in `O(n^2)` time, so they are slow on large inputs.
 
-So is it possible to sort a list of items by comparing their items faster than O(n2)? The answer is yes and here’s how we can do it.
+So is it possible to sort a list of items by comparing their items faster than `O(n^2)`? The answer is yes and here’s how we can do it.
 
 The nature of those three algorithms mentioned above is that we almost compared each two items from initial list.
 
@@ -35,17 +35,17 @@ $input = array(6, 5, 3, 1, 8, 7, 2, 4);
  
 function merge_sort($arr)  
 {  
-	if (count($arr)  0 && count($right) > 0) {  
-		if ($left[0] 2) in the worst case. So we can be sure that merge sort is very stable no matter the input.
+		if (count($arr)  0 && count($right) > 0) {  
+			if ($left[0] 2) in the worst case. So we can be sure that merge sort has predictable `O(n log n)` runtime no matter the input. Merge sort can also be stable, but that stability depends on preserving the relative order of equal items during the merge step.
 
-[![Merge sort complexity is O(n*log(n))](../images/mergesortcomplexity.png)](../images/mergesortcomplexity.png)Merge sort complexity is O(n*log(n))
-[![Merge sort complexity is O(n*log(n)) even in the worst case!](../images/SortingAlgorithmsComplexity.jpg)](../images/SortingAlgorithmsComplexity.jpg)Merge sort complexity is O(n*log(n)) even in the worst case!
+[![Merge sort complexity is O(n log n)](../images/mergesortcomplexity.png)](../images/mergesortcomplexity.png)Merge sort complexity is `O(n log n)`
+[![Merge sort complexity is O(n log n) even in the worst case!](../images/SortingAlgorithmsComplexity.jpg)](../images/SortingAlgorithmsComplexity.jpg)Merge sort complexity is `O(n log n)` even in the worst case!
 
 ## Two reasons why merge sort is useful
 
 ## 1. Fast no matter the input
 
-Merge sort is a great sorting algorithm mainly because it’s very fast and stable. It’s complexity is the same even in the worst case and it is O(n*log(n)). Note that even quicksort’s complexity is O(n2) in the worst case, which for n = 20 is about 4.6 times slower!
+Merge sort is a great sorting algorithm mainly because it’s very fast and its runtime is predictable. Its complexity is the same even in the worst case and it is `O(n log n)`. A usual merge sort implementation can also be stable when equal items are taken from the left sub-list first during merge. Note that quicksort’s complexity is `O(n^2)` in the worst case.
 
 [![Merge sort is about 4.6 times faster than quicksort for n = 20!](../images/mergesortvs.bubblesortforn20.png)](../images/mergesortvs.bubblesortforn20.png) 
 
@@ -57,7 +57,7 @@ Another cool reason is that merge sort is easy to implement. Indeed most of the 
 
 ## 1. Slower than non-comparison based algorithms
 
-Merge sort is however based on the comparison model and as such can be slower than algorithms non-based on comparisons that can sort data in linear time. Of course, this depends on the input data, so we must be careful for the input.
+Merge sort is however based on the comparison model and as such can be slower than algorithms non-based on comparisons, such as [counting sort](./counting-sort.md) and [radix sort](./radix-sort.md), when their input assumptions are satisfied. Of course, this depends on the input data, so we must be careful for the input.
 
 ## 2. Difficult to implement for beginners
 
@@ -65,6 +65,6 @@ Although I don’t think this can be the main reason why not to use merge sort s
 
 ## 3. Slower than insertion and bubble sort for nearly sorted input
 
-Again it is very important to know the input data. Indeed if the input is nearly sorted the insertion sort or bubble sort can be faster. Note that in the best case insertion and bubble sort complexity is O(n), while merge sort’s best case is O(n*log(n)).
+Again it is very important to know the input data. Indeed if the input is nearly sorted the insertion sort or optimized bubble sort can be faster. Note that insertion sort and bubble sort with an early-exit optimization can run in `O(n)` in the best case, while merge sort’s best case remains `O(n log n)`.
 
 As a conclusion I can say that merge sort is practically one of the best sorting algorithms because it’s easy to implement and fast, so it must be considered by every developer!

@@ -4,7 +4,7 @@
 
 Sorted data can dramatically change the speed of our program, therefore sorting algorithms are something quite special in computer science. For instance searching in a sorted list is faster than searching in an unordered list.
 
-There are two main approaches in sorting – by comparing the elements and without comparing them. A typical algorithm from the first group is insertion sort. This algorithm is very simple and very intuitive to implement, but unfortunately it is not so effective compared to other sorting algorithms as [quicksort](/2010/06/18/friday-algorithms-iterative-quicksort/) and merge sort. Indeed insertion sort is useful for small sets of data with no more than about 20 items.
+There are two main approaches in sorting – by comparing the elements and without comparing them. A typical algorithm from the first group is insertion sort. This algorithm is very simple and very intuitive to implement, but unfortunately it is not so effective compared to other sorting algorithms as [quicksort](./quicksort.md) and [merge sort](./merge-sort.md). Indeed insertion sort is useful for small sets of data with no more than about 20 items.
 
 Insertion sort it is very intuitive method of sorting items and we often use it when we play card games. In this case the player often gets an unordered set of playing cards and intuitively starts to sort it. First by taking a card, making some comparisons and then putting the card on the right position.
 
@@ -60,7 +60,7 @@ Just because we use searching the right position in an ordered array we can use 
 
 ## Complexity
 
-As I said this algorithm is not so effective. Its complexity is O(n2) which is far worse than the O(n*log(n)) of quicksort, as you can see on the diagram bellow. 
+As I said this algorithm is not so effective on large random inputs. Its average and worst-case complexity is `O(n^2)`, which is far worse than the average-case `O(n log n)` of quicksort, as you can see on the diagram bellow.
 
 [![n*n vs. n*log(n)](../images/InsertionSortComplexityChart.png)](../images/InsertionSortComplexityChart.png)n*n vs. n*log(n)
 

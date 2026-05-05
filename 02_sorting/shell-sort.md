@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Insertion sort](/2012/02/13/computer-algorithms-insertion-sort/) is a great algorithm, because it’s very intuitive and it is easy to implement, but the problem is that it makes many exchanges for each “light” element in order to put it on the right place. Thus “light” elements at the end of the list may slow down the performance of insertion sort a lot. That is why in 1959 [Donald Shell](http://en.wikipedia.org/wiki/Donald_Shell) proposed an algorithm that tries to overcome this problem by comparing items of the list that lie far apart.
+[Insertion sort](./insertion-sort.md) is a great algorithm, because it’s very intuitive and it is easy to implement, but the problem is that it makes many exchanges for each “light” element in order to put it on the right place. Thus “light” elements at the end of the list may slow down the performance of insertion sort a lot. That is why in 1959 [Donald Shell](http://en.wikipedia.org/wiki/Donald_Shell) proposed an algorithm that tries to overcome this problem by comparing items of the list that lie far apart.
 
 [![Insertion Sort vs. Shell Sort](../images/Insertion-Sort-vs.-Shell-Sort.png)](../images/Insertion-Sort-vs.-Shell-Sort.png)Insertion sort compares every single item with all the rest elements of the list in order to find its place, while Shell sort compares items that lie far apart. This makes light elements to move faster to the front of the list.
 
@@ -95,7 +95,7 @@ shell_sort($input);
 
 ## Complexity
 
-Yet again we can’t determine the exact complexity of this algorithm, because it depends on the gap sequence. However we may say what is the complexity of Shell sort with the sequences of Knuth, Pratt and Donald Shell. For the Shell’s sequence the complexity is O(n2), while for the Pratt’s sequence it is O(n*log2(n)). The best approach is the Knuth sequence where the complexity is O(n3/2), as you can see on the diagram bellow.
+Yet again we can’t determine one exact complexity for this algorithm, because it depends strongly on the gap sequence and the assumptions used in the analysis. With Shell’s original sequence the worst case is commonly given as `O(n^2)`. Other sequences can do better, and references may quote different bounds for Pratt, Knuth, and later sequences. The important practical point is that the gap sequence matters a lot, so Shell sort should be described with that caveat rather than as having one universal complexity.
 
 [![Complexity of Shell Sort](../images/Complexity-of-Shell-Sort.png)](../images/Complexity-of-Shell-Sort.png)Complexity of Shell sort with different gap sequences.
 
