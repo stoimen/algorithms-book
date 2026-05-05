@@ -48,358 +48,113 @@ The first class, typically called Item is a normal class containing various info
 
 In our terms each object of class Person will contain a pointer to a next object of the same class Person.
 
-```php
-class Person
-{
-	public $next = null;
-	public $prev = null;
- 
-	protected $_firstName = '';
-	protected $_lastName = '';
-	protected $_phone = '';
- 
- 
-	public function __construct($firstName, $lastName, $phone)
-	{
-		$this->_firstName = $firstName;
-		$this->_lastName = $lastName;
-		$this->_phone = $phone;
-	}
- 
-	public function __toString()
-	{
-		return 'First name: ' . $this->_firstName 
-			 . ', Last name: ' . $this->_lastName 
-			 . ', Phone: ' . $this->_phone;
-	}
-}
-```
-
-So we must first design the structure of an item. 
-
-The following thing to do is to define a linked list as an abstraction over a real world list, just like the stack and the queue. We can implement various operations for a linked list like insert, delete, insertBefore, insertAfter, sort, search, insertSorted etc. It’s up to the developer to decide which operations he wants to use. And of course this depends on the application.
+So we must first design the structure of an item. The following thing to do is to define a linked list as an abstraction over a real world list, just like the stack and the queue.
 
 ## Implementation
 
+A doubly linked list is built from one passive struct (the node) and a small set of routines that splice nodes in and out by rewiring pointers. The list itself only carries handles to its first and last nodes.
+
+### The node
+
+```
+Node:
+    key
+    next  ← NIL
+    prev  ← NIL
+```
+
+### The list
+
+```
+List:
+    head  ← NIL
+    tail  ← NIL
+```
+
 ## Operations
 
-We can perform and define as much operations as we need. For instance we can code a linked list only with the basic insert, delete and print, but we can also go for insertBefore, insertAfter, deleteBefore, deleteAfter, insertSorted, which are described on the diagrams below.
+The basic set is INSERT at the head, DELETE a given node, INSERT_AFTER relative to a reference node, and SEARCH by key. The diagrams below sketch each one. Variants such as `insertBefore`, `deleteBefore`, `deleteAfter`, or `insertSorted` are straightforward symmetries of these and are omitted.
 
 ## Insert
 
-Inserting in the front of a list seems much like inserting into a queue. In this case the new item becomes the head of the list and its successor is the previous head of the list.
+Inserting at the head wires the new node in front of the current head and re-anchors `L.head`. If the list was empty, the new node is also the tail.
 
 [![Inserting at the front of a Linked List](../images/1.-Insert-at-the-front-of-a-Linked-List.png)](../images/1.-Insert-at-the-front-of-a-Linked-List.png)Inserting at the front of the list
 
-```php
-class LList
-{
-	public $head;
-	public $tail;
- 
-	public function insert($item) 
-	{
-		$item->next = $this->head;
- 
-		if ($this->head != null) {
-			$this->head->prev = $item;
-		}
- 
-		$this->head = $item;
-	}
- 
-	public function __toString()
-	{
-		$cur = $this->head;
- 
-		$output = '';
-		while ($cur) {
-			$output .= $cur . ' ';
- 
-			$cur = $cur->next;
-		}
- 
-		return $output . "\n";
-	}
-}
- 
-$ll = new LList();
- 
-$a = new Person('John', 'Smith', '555 9401');
-$b = new Person('James', 'Johnes', '555 2454');
- 
-$ll->insert($a);
-$ll->insert($b);
- 
-// James Johnes 555 2454
-// John Smith 555 9401
-echo $ll;
+```
+INSERT(L, x):
+    x.next ← L.head
+    x.prev ← NIL
+
+    if L.head ≠ NIL then
+        L.head.prev ← x
+    else
+        L.tail ← x           // first node — also becomes the tail
+
+    L.head ← x
 ```
 
 ## Delete
 
-Delete the head of the list is much like deleting an item from a queue. However we can implement also deleting a custom element that’s inside the list.
+`DELETE` assumes a direct reference to the node `x` to remove. It splices `x` out by rewiring its two neighbours, taking care to update `L.head` or `L.tail` when `x` sits at either end.
 
 [![Delete an item](../images/4.-Delete-an-item.png)](../images/4.-Delete-an-item.png)Deleting an item from the inside of the list!
 
-```php
-class LList
-{
-	public $head;
-	public $tail;
- 
-	public function insert($item) 
-	{
-		$item->next = $this->head;
- 
-		if ($this->head != null) {
-			$this->head->prev = $item;
-		}
- 
-		$this->head = $item;
-	}
- 
-	public function delete($item) 
-	{
-		$cur = $this->head;
- 
-		while ($cur) {
- 
-			if ($cur == $item) {
-				$prev = $cur->prev;
-				$next = $cur->next;
- 
-				if ($prev != null) {
-					$prev->next = $next;
-				} else {
-					// because head points to the first item
-					$this->head = $next;
-				}
- 
-				if ($next != null) {
-					$next->prev = $prev;
-				}
- 
-				return $cur;
-			}
- 
-			$cur = $cur->next;
-		}
-	}
- 
-	public function __toString()
-	{
-		$cur = $this->head;
- 
-		$output = '';
-		while ($cur) {
-			$output .= $cur . ' ';
- 
-			$cur = $cur->next;
-		}
- 
-		return $output . "\n";
-	}
-}
- 
-$ll = new LList();
- 
-$a = new Person('John', 'Smith', '555 9401');
-$b = new Person('James', 'Johnes', '555 2454');
-$c = new Person('Jeanne', 'Francois', '333 2323');
- 
-$ll->insert($a);
-$ll->insert($b);
-$ll->insert($c);
- 
-// prints objects $c, $b, $a:
-// Jeanne Francois 333 2323
-// James Johnes 555 2454
-// John Smith 555 9401
-echo $ll;
- 
-$ll->delete($b);
- 
-// prints objects $c, $a:
-// Jeanne Francois 333 2323
-// John Smith 555 9401
-echo $ll;
 ```
+DELETE(L, x):
+    if x.prev ≠ NIL then
+        x.prev.next ← x.next
+    else
+        L.head ← x.next       // x was the head
+
+    if x.next ≠ NIL then
+        x.next.prev ← x.prev
+    else
+        L.tail ← x.prev       // x was the tail
+```
+
+The original PHP version walks the list looking for `x` before splicing it out; that scan is wasted work given that we already hold a pointer to the node, and removing it makes `DELETE` run in `O(1)`.
 
 ## Insert before & insert after
 
-Inserting before and after needs a reference to an already existing list item. After that the new object is inserted into it right place, as shown on the images below.
+`INSERT_AFTER` takes a reference node `x` already in the list and a fresh node `y` to insert immediately after it. The new node inherits `x`'s right neighbour as its successor; if `x` was the tail, `y` takes over that role.
 
 [![Insert after a given item of a Linked List](../images/2.-Insert-after-a-given-item-of-a-Linked-List.png)](../images/2.-Insert-after-a-given-item-of-a-Linked-List.png)Insert after splits the list after the pointed item and inserts the new object there!
 
-```php
-class LList
-{
-	public $head;
-	public $tail;
- 
-	public function insert($item) 
-	{
-		$item->next = $this->head;
- 
-		if ($this->head != null) {
-			$this->head->prev = $item;
-		}
- 
-		$this->head = $item;
-	}
- 
-	public function insertAfter($newItem, $item) 
-	{
-		$cur = $this->head;
-		while ($cur) {
-			if ($cur == $item) {
-				$next = $cur->next;
- 
-				$cur->next = $newItem;
-				$newItem->prev = $cur;
- 
-				if ($next != null) {
-					$newItem->next = $next;
-					$next->prev = $newItem;
-				}
-				return;
-			}
-			$cur = $cur->next;
-		}
- 
-		$this->head = $this->tail = $item;
-	}
- 
-	public function __toString()
-	{
-		$cur = $this->head;
- 
-		$output = '';
-		while ($cur) {
-			$output .= $cur . ' ';
- 
-			$cur = $cur->next;
-		}
- 
-		return $output . "\n";
-	}
-}
- 
-$ll = new LList();
- 
-$a = new Person('John', 'Smith', '555 9401');
-$b = new Person('James', 'Johnes', '555 2454');
-$c = new Person('Jeanne', 'Francois', '333 2323');
- 
-$ll->insert($a);
-$ll->insert($c);
- 
-// inserts $b after $a
-$ll->insertAfter($b, $c);
- 
-// Jeanne Francois 333 2323
-// James Johnes 555 2454
-// John Smith 555 9401
-echo $ll;
 ```
+INSERT_AFTER(L, x, y):
+    y.prev ← x
+    y.next ← x.next
 
-Insert a new object before an item is the same as insert after, but instead of splitting the list after the given item, we split it before it.
+    if x.next ≠ NIL then
+        x.next.prev ← y
+    else
+        L.tail ← y            // x was the tail
+
+    x.next ← y
+```
 
 [![Insert before a given item of a Linked List](../images/3.-Insert-before-a-given-item-of-a-Linked-List.png)](../images/3.-Insert-before-a-given-item-of-a-Linked-List.png)Insert before and insert after are very similar operations!
 
+`INSERT_BEFORE` is symmetric — swap `next` and `prev`, and update `L.head` instead of `L.tail` when the reference node is the head.
+
 ## Search
 
-Searching into a list can be modified depending on the application needs. Here we just compare the searched object with a list item.
+A linear scan from the head, comparing each node's key against the target. Returns the matching node, or `NIL` if no node carries that key.
 
 [![Search for an item](../images/5.-Search-for-an-item.png)](../images/5.-Search-for-an-item.png)
 
-```php
-class LList
-{
-	public $head;
-	public $tail;
- 
-	public function insert($item) 
-	{
-		$item->next = $this->head;
- 
-		if ($this->head != null) {
-			$this->head->prev = $item;
-		}
- 
-		$this->head = $item;
-	}
- 
-	public function insertAfter($item, $key) 
-	{
-		$cur = $this->head;
-		while ($cur) {
-			if ($cur->data == $key) {
-				$next = $cur->next;
- 
-				$cur->next = $item;
-				$item->prev = $cur;
- 
-				if ($next != null) {
-					$item->next = $next;
-					$next->prev = $item;
-				}
-				return;
-			}
-			$cur = $cur->next;
-		}
- 
-		$this->head = $this->tail = $item;
-	}
- 
-	public function search($item)
-	{
-		$cur = $this->head;
- 
-		while ($cur) {
-			if ($cur == $item) {
-				return 1;
-			}
- 
-			$cur = $cur->next;
-		}
- 
-		return 0;
-	}
- 
-	public function __toString()
-	{
-		$cur = $this->head;
- 
-		$output = '';
-		while ($cur) {
-			$output .= $cur . ' ';
- 
-			$cur = $cur->next;
-		}
- 
-		return $output . "\n";
-	}
-}
- 
-$ll = new LList();
- 
-$a = new Person('John', 'Smith', '555 9401');
-$b = new Person('James', 'Johnes', '555 2454');
-$c = new Person('Jeanne', 'Francois', '333 2323');
- 
-$ll->insert($a);
-$ll->insert($b);
- 
-// 1, because $b is in the list
-echo $ll->search($b);
- 
-// 0, cause $c isn't in the list
-echo $ll->search($c);
+```
+SEARCH(L, k):
+    cur ← L.head
+    while cur ≠ NIL do
+        if cur.key = k then
+            return cur
+        cur ← cur.next
+    return NIL
 ```
 
-The operations here are only one sub-set of all possible operations you can implement on a linked list. It all depends on our needs. However the principles are important, so we can implement more complex data structures.
+The operations above are only a subset of what a list can support; the principles are what carry over to the more complex pointer-based data structures that follow.
 
 ## Application
 
