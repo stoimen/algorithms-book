@@ -53,43 +53,68 @@ Why? Well, a complete binary tree with a full last level contains n/2 + 1 nodes 
 
 ## Code
 
-So far we know how to build the heap. Next thing is to swap the first and the last element of the array and rebuild the heap. Here’s the PHP code of how to do this.
+The implementation reduces to three short routines:
 
-```php
-$a = array(1, 6, 3, 8, 2, 5, 4);
- 
-function heapify(&$a, &$i, &$heap_size)
-{
-    $l = $i*2 + 1;
-    $r = $i*2 + 2;
- 
-    if ($l  -1; $i--) {
-        heapify($a, $i, $heap_size);
-    }
-}
- 
-function heapsort(&$a)
-{
-    $heap_size = count($a);
-    build_heap($a, $heap_size);
- 
-    while ($heap_size--) {
-        $t = $a[$heap_size];
-        $a[$heap_size] = $a[0];
-        $a[0] = $t;
-        build_heap($a, $heap_size);
-    }
-}
- 
-// 1 2 3 4 5 6 8
-heapsort($a);
+- `HEAPIFY` — fix a single node `i` whose two subtrees are already heaps.
+- `BUILD_HEAP` — turn an arbitrary array into a heap.
+- `HEAPSORT` — repeatedly extract the root to produce a sorted array.
+
+Throughout this section we use 1-based indices to match the diagrams above: the root sits at `A[1]`, and node `i`'s children are at `A[2·i]` and `A[2·i + 1]`.
+
+### Heapify
+
+`HEAPIFY` assumes the subtrees rooted at `2·i` and `2·i + 1` are already heaps and that only `A[i]` may be out of place. It picks the largest of the three nodes and, if it isn't `i`, swaps and recurses into the affected subtree.
+
 ```
+HEAPIFY(A, i, heap_size):
+    l ← 2 · i
+    r ← 2 · i + 1
+    largest ← i
+
+    if l ≤ heap_size and A[l] > A[largest] then
+        largest ← l
+    if r ≤ heap_size and A[r] > A[largest] then
+        largest ← r
+
+    if largest ≠ i then
+        SWAP(A[i], A[largest])
+        HEAPIFY(A, largest, heap_size)
+```
+
+Each call descends at most one level, so `HEAPIFY` runs in `O(log n)` on a heap of size `n`.
+
+### Building the heap
+
+Items in the second half of the array are leaves — they have no children inside the heap, so they are already trivial heaps of size 1. We only need to heapify the internal nodes, those at indices `floor(heap_size / 2)` down to `1`, in reverse order. By the time `HEAPIFY` is called on a node, both of its children already root valid heaps, which is exactly what `HEAPIFY` requires.
+
+```
+BUILD_HEAP(A, heap_size):
+    for i ← floor(heap_size / 2) down to 1 do
+        HEAPIFY(A, i, heap_size)
+```
+
+### Sorting
+
+With a heap in place, sorting proceeds by repeatedly extracting the maximum: swap the root with the last item of the heap, shrink the heap by one (the just-extracted maximum is now in its final sorted position at the tail of the array), and re-heapify the new root.
+
+```
+HEAPSORT(A):
+    heap_size ← length(A)
+    BUILD_HEAP(A, heap_size)
+
+    while heap_size > 1 do
+        SWAP(A[1], A[heap_size])
+        heap_size ← heap_size − 1
+        HEAPIFY(A, 1, heap_size)
+```
+
+Only the root has been disturbed by the swap, so a single `HEAPIFY` from the root is enough — there is no need to rebuild the entire heap on each iteration.
 
 ## Complexity
 
 OK, the last question is – how do we know that this algorithm sorts in place in n.log(n) time? Let’s explore the algorithm one more time. The heapify worst-case is when we start from the root down to the lowest level of the tree. In these terms if the tree height is h, the time is O(h), but because the tree is balanced (complete) the time in terms of n is O(log(n)). 
 
-In the other hand to build a heap we walk from floor(len[A] / 2) to 0, which makes it run in O(n.log(n)). However there is only one case when the heapify may run in log(n), and that is when it starts from the root, so it’s not absolutely true that building the heap runs in n.log(n).
+In the other hand to build a heap we walk from floor(len[A] / 2) to 1, which makes it run in O(n.log(n)). However there is only one case when the heapify may run in log(n), and that is when it starts from the root, so it’s not absolutely true that building the heap runs in n.log(n).
 
 Indeed heapify depend on the level it has been started. It doesn’t run for the last ceil(n/2) items and it runs in O(1) for another 2h-1. Thus in practice we can build a heap in O(n). 
 
