@@ -2,43 +2,17 @@
 
 ## Overview
 
-It’s weird that bubble sort is the most famous sorting algorithm in practice since it is one of the worst approaches for data sorting. Why is bubble sort so famous? Perhaps because of its exotic name or because it is so easy to implement. First let’s take a look on its nature.
+It’s weird that bubble sort is the most famous sorting algorithm in practice since it is one of the worst approaches for data sorting. Why is bubble sort so famous? Perhaps because of its exotic name or because it is so easy to implement.
 
 Bubble sort consists of comparing each pair of adjacent items. If the item on the left is larger than the item on the right, the two items swap places. During one full pass through the list, larger items keep moving to the right, so the largest unsorted item ends the pass in its final position.
 
-## 1. Each pair of adjacent elements is compared
+![Optimized bubble sort infographic](../images/bubble-sort-infographic.png)
 
-[![In bubble sort we compare two adjacent elements](../images/BubbleSortStep1CompareTwoElements1.png)](../images/BubbleSortStep1CompareTwoElements1.png)In bubble sort we compare each pair of adjacent elements.
+The infographic shows the optimized version of bubble sort. Each pass scans the unsorted part of the array from left to right. Adjacent elements are compared, and if the left element is larger than the right element, they swap. This pushes larger elements toward the end of the array.
 
-Here `4` is larger than `2`, so if `4` appears on the left side of `2`, the two items must swap.
+After a pass finishes, the largest element from the unsorted part is already in its final position. The next pass can therefore ignore that sorted zone and scan one fewer element. If a complete pass performs no swaps, the algorithm stops early because the array is already sorted.
 
-## 2. Swap larger elements to the right
-
-[![If larger elements appear before smaller elements they should swap](../images/BubbleSortStep2AnElementStartstoBubble.png)](../images/BubbleSortStep2AnElementStartstoBubble.png)If a larger element appears before a smaller element, they should swap.
-
-When a larger item is followed by a smaller item, the pair is out of order. Swapping the pair moves the larger item one position to the right.
-
-## 3. Move forward and keep comparing adjacent pairs
-
-[![Swapping is slow and that is the main reason not to use bubble sort](../images/BubbleSortStep3ALighterElementStartstoBubble.png)](../images/BubbleSortStep3ALighterElementStartstoBubble.png)Swapping is slow and that is the main reason not to use bubble sort.
-
-The problem with bubble sort is that you may have to swap a lot of elements.
-
-## 4. The largest unsorted item keeps moving right
-
-[![On each pass the largest unsorted element moves toward the end](../images/BubbleSortStep4ALighterElementStartstoBubble.png)](../images/BubbleSortStep4ALighterElementStartstoBubble.png)On each pass the largest unsorted element moves toward the end.
-
-If another even larger item appears later in the pass, that item continues moving right instead. By the end of the pass, the largest item in the unsorted part reaches the end.
-
-## 5. Finally the largest item is in its place
-
-[![Finally the list begins to look sorted](../images/BubbleSortStep5Themostlightelementisonitsplace.png)](../images/BubbleSortStep5Themostlightelementisonitsplace.png)Finally the list begins to look sorted.
-
-At the end of each pass we can be sure that the largest unsorted item is in the right place: at the end of the unsorted part of the list.
-
-The problem is that this algorithm needs a tremendous number of comparisons and swaps, and as we know already this can be slow.
-
-We can easily see how ineffective bubble sort is. Now the question remains: why is it so famous? Maybe indeed the answer lies in the simplicity of its implementation. Let’s summarize the algorithm in pseudocode.
+Even with these optimizations, bubble sort can still require a tremendous number of comparisons and swaps. That is the main reason it is rarely a good practical choice for large lists. Still, the algorithm is useful for learning because the idea is simple and the movement of elements is easy to visualize.
 
 ## Pseudo Code
 
@@ -69,13 +43,7 @@ end procedure
 
 The average and worst-case complexity of bubble sort is `O(n^2)`. This is slow compared to algorithms like quicksort, merge sort, and heapsort, which run in `O(n log n)` on average.
 
-With the early-exit flag, the best-case complexity is `O(n)`: if the list is already sorted, the algorithm performs one pass, makes no swaps, and stops.
-
-[![Bubble sort compared to quicksort, merge sort and heapsort in the average case](../images/BubbleSortComparedToOthers.png)](../images/BubbleSortComparedToOthers.png)Bubble sort compared to quicksort, merge sort and heapsort in the average case
-
-Even for small values of n, the number of comparisons and swaps can be tremendous.
-
-[![stats](../images/BubbleSortStats-2.png)](../images/BubbleSortStats-2.png)Bubble sort is three times slower than quicksort even for n = 100, but it's easier to implement
+With the early-exit flag, the best-case complexity is `O(n)`: if the list is already sorted, the algorithm performs one pass, makes no swaps, and stops. Even for small values of `n`, however, the number of comparisons and swaps can be high when the list is far from sorted.
 
 Another problem is that most of the languages (libraries) have built-in sorting functions, that they don’t make use of bubble sort and are faster for sure. So why a developer should implement bubble sort at all?
 
